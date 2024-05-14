@@ -9,13 +9,30 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+        NavigationView {
+            List{
+                Button {
+                    print("Click")
+                } label: {
+                    PresetListCell()
+                }
+                
+                NavigationLink(destination: PresetDetailView()
+                    .navigationTitle("PresetName")) {
+                        PresetListCell()
+                    }
+                
+                PresetListCell()
+                PresetListCell()
+            }
+            .navigationTitle("Gliding")
+            .navigationBarTitleDisplayMode(.inline)
+//            .navigationTitle({
+//                Text("Gliding").foregroundStyle(.green.opacity(0.8))
+//            })
+//            .navigationBarTitleDisplayMode(.large)
         }
-        .padding()
+        
     }
 }
 

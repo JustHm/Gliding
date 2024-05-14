@@ -15,9 +15,10 @@ enum HomeSection: Int {
 }
 
 // Item
-enum HomeSectionItem: Hashable {
-    case logo()
-    case category()
+enum HomeSectionItem {
+    case statistic(StatisticData)
+    case trainingMenu(TrainingMenuData)
+    case pool(PoolInfo)
 }
 
 extension ViewController {
@@ -64,9 +65,21 @@ extension ViewController {
         let section = NSCollectionLayoutSection(group: group)
         section.interGroupSpacing = 10
         section.orthogonalScrollingBehavior = .continuous
-        
+        return section
     }
     
+    private func createPoolSection() -> NSCollectionLayoutSection {
+        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1))
+        let item = NSCollectionLayoutItem(layoutSize: itemSize)
+        
+        let groupSize = NSCollectionLayoutSize(widthDimension: .estimated(200), heightDimension: .estimated(300))
+        let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
+        
+        let section = NSCollectionLayoutSection(group: group)
+        section.interGroupSpacing = 10
+        section.orthogonalScrollingBehavior = .continuous
+        return section
+    }
 
     private func createTwoColumnSection(weightConstant :Int) -> NSCollectionLayoutSection {
             let weight = (Double(weightConstant) * 0.05)

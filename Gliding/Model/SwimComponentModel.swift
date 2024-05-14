@@ -10,7 +10,7 @@ import Foundation
 struct SwimComponentModel {
     var name: String
     var type: StrokeType
-    var lane: Int
+    var lane: Int //lane distance 25,50,100
     var rep: Int
     var timeLimit: Int
     var description: String

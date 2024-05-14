@@ -9,7 +9,22 @@ import SwiftUI
 
 struct PresetListCell: View {
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack(alignment: .leading) {
+            Text("Preset Name")
+                .padding(.bottom, 8)
+            HStack(alignment: .top) {
+                Image(systemName: "figure.open.water.swim")
+                    .imageScale(.large)
+                    .foregroundStyle(.tint)
+                Spacer()
+                Text("1000M")
+                    .font(.caption)
+                    .foregroundStyle(.secondary)
+                    
+            }
+            
+            
+        }
     }
 }
 

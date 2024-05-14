@@ -9,10 +9,28 @@ import SwiftUI
 
 struct PresetDetailView: View {
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        NavigationView {
+            List {
+                Section("Warm up") {
+                    SwimComponentView()
+                }
+                Section("Main") {
+                    SwimComponentView()
+                }
+                Section("Cool Down") {
+                    Text("자유형 100M")
+                }
+            }
+        }
+        .navigationTitle("PresetName")
+        .navigationBarTitleDisplayMode(.inline)
     }
 }
 
 #Preview {
-    PresetDetailView()
+    NavigationView {
+        PresetDetailView()
+    }
+    
+        
 }
