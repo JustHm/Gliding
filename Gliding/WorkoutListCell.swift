@@ -1,0 +1,8 @@
+//
+//  WorkoutListCell.swift
+//  Gliding
+//
+//  Created by 안정흠 on 4/30/24.
+//
+
+import Foundation
