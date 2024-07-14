@@ -9,17 +9,6 @@ import UIKit
 
 struct StatisticData: Hashable {
     var workoutDone: Bool
+    var date: Date
 }
 
-struct TrainingMenuData: Hashable {
-    var name: String
-    var description: String
-    var color: UIColor
-}
-
-struct PoolInfo: Hashable {
-    var id: String
-    var name: String
-    var image: UIImage
-    var locate: String
-}

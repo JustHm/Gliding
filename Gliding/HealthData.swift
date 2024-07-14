@@ -14,9 +14,10 @@ class HealthData {
     private let store = HKHealthStore()
     private let workoutConfiguration: HKWorkoutActivityType = .swimming
     private let quantityIdentifier = [
+        HKObjectType.workoutType(), //for swim
         HKQuantityType(.distanceSwimming),
         HKQuantityType(.swimmingStrokeCount),
-        HKQuantityType(.waterTemperature),
+        HKQuantityType(.waterTemperature), //
         
         HKQuantityType(.appleExerciseTime),
         HKQuantityType(.heartRate),
@@ -51,22 +52,61 @@ class HealthData {
         let startDate = calendar.startOfDay(for: Date())
         let endDate = calendar.date(byAdding: .day, value: 1, to: startDate)
         let today = HKQuery.predicateForSamples(withStart: startDate, end: endDate)
-
-
+        
+        
         // Create the query descriptor.
         let swimmingDistanceType = HKQuantityType(.distanceSwimming)
         let swimmingToday = HKSamplePredicate.quantitySample(type: swimmingDistanceType, predicate:today)
         let sumOfSwimmingQuery = HKStatisticsQueryDescriptor(predicate: swimmingToday, options: .cumulativeSum)
-
-
+        
+        
         // Run the query.
         let stepCount = try await sumOfSwimmingQuery.result(for: store)?
             .sumQuantity()?
             .doubleValue(for: HKUnit.count())
-
-
+        
+        
         // Use the step count here.
     }
+    
+    func fetchSwimmingWorkouts(completion: @escaping ([HKWorkout]?, Error?) -> Void) {
+        let workoutType = HKObjectType.workoutType()
+        
+        let predicate = HKQuery.predicateForWorkouts(with: .swimming)
+        let sortDescriptor = NSSortDescriptor(key: HKSampleSortIdentifierEndDate, ascending: false)
+        
+        let query = HKSampleQuery(sampleType: workoutType, predicate: predicate, limit: 0, sortDescriptors: [sortDescriptor]) { (query, samples, error) in
+            guard let workouts = samples as? [HKWorkout] else {
+                completion(nil, error)
+                return
+            }
+            completion(workouts, nil)
+        }
+        
+        store.execute(query)
+    }
+    
+    func fetchSwimmingWorkoutDistances(completion: @escaping ([Double]?, Error?) -> Void) {
+        fetchSwimmingWorkouts { (workouts, error) in
+            guard let workouts = workouts else {
+                completion(nil, error)
+                return
+            }
+            
+            var distances: [Double] = []
+            
+            for workout in workouts {
+                if let distanceType = HKObjectType.quantityType(forIdentifier: .distanceSwimming) {
+                    if let distance = workout.statistics(for: distanceType)?.sumQuantity()?.doubleValue(for: HKUnit.meter()) {
+                        distances.append(distance)
+                    }
+                }
+            }
+            
+            completion(distances, nil)
+        }
+    }
+    
 }
 
 enum HealthKitError: String, Error {

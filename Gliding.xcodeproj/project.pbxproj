@@ -15,22 +15,16 @@
 		2232D3602B95569F00804F81 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2232D35F2B95569F00804F81 /* Assets.xcassets */; };
 		2232D3632B95569F00804F81 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2232D3612B95569F00804F81 /* LaunchScreen.storyboard */; };
 		2232D36E2B95569F00804F81 /* GlidingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2232D36D2B95569F00804F81 /* GlidingTests.swift */; };
-		2232D3782B95569F00804F81 /* GlidingUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2232D3772B95569F00804F81 /* GlidingUITests.swift */; };
-		2232D37A2B95569F00804F81 /* GlidingUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2232D3792B95569F00804F81 /* GlidingUITestsLaunchTests.swift */; };
-		2232D38D2B95573500804F81 /* Gliding_watchappApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2232D38C2B95573500804F81 /* Gliding_watchappApp.swift */; };
-		2232D38F2B95573500804F81 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2232D38E2B95573500804F81 /* ContentView.swift */; };
-		2232D3912B95573600804F81 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2232D3902B95573600804F81 /* Assets.xcassets */; };
-		2232D3942B95573600804F81 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2232D3932B95573600804F81 /* Preview Assets.xcassets */; };
-		2232D39E2B95573700804F81 /* Gliding_watchapp_Watch_AppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2232D39D2B95573700804F81 /* Gliding_watchapp_Watch_AppTests.swift */; };
-		2232D3A82B95573700804F81 /* Gliding_watchapp_Watch_AppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2232D3A72B95573700804F81 /* Gliding_watchapp_Watch_AppUITests.swift */; };
-		2232D3AA2B95573700804F81 /* Gliding_watchapp_Watch_AppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2232D3A92B95573700804F81 /* Gliding_watchapp_Watch_AppUITestsLaunchTests.swift */; };
 		2232D3AD2B95573700804F81 /* Gliding-watchapp Watch App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 2232D38A2B95573500804F81 /* Gliding-watchapp Watch App.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		2232D3B92B955BF100804F81 /* PresetListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2232D3B82B955BF100804F81 /* PresetListCell.swift */; };
-		2232D3BB2B955DC400804F81 /* PresetDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2232D3BA2B955DC400804F81 /* PresetDetailView.swift */; };
-		2232D3BD2B95779C00804F81 /* SwimComponentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2232D3BC2B95779C00804F81 /* SwimComponentView.swift */; };
-		2232D3BF2B96AD0F00804F81 /* SwimComponentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2232D3BE2B96AD0F00804F81 /* SwimComponentModel.swift */; };
+		2232D3BF2B96AD0F00804F81 /* TrainingTableModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2232D3BE2B96AD0F00804F81 /* TrainingTableModel.swift */; };
 		2232D3C12B96B87B00804F81 /* HealthData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2232D3C02B96B87B00804F81 /* HealthData.swift */; };
 		225047A02BE1268A00B8DE22 /* WorkoutListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2250479F2BE1268A00B8DE22 /* WorkoutListCell.swift */; };
+		227C0F912C439168006D42FB /* RxBlocking in Frameworks */ = {isa = PBXBuildFile; productRef = 227C0F902C439168006D42FB /* RxBlocking */; };
+		227C0F932C439168006D42FB /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 227C0F922C439168006D42FB /* RxCocoa */; };
+		227C0F952C439168006D42FB /* RxRelay in Frameworks */ = {isa = PBXBuildFile; productRef = 227C0F942C439168006D42FB /* RxRelay */; };
+		227C0F972C439168006D42FB /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 227C0F962C439168006D42FB /* RxSwift */; };
+		227C0F992C439168006D42FB /* RxTest in Frameworks */ = {isa = PBXBuildFile; productRef = 227C0F982C439168006D42FB /* RxTest */; };
+		227C0F9B2C43B5E9006D42FB /* PoolInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227C0F9A2C43B5E9006D42FB /* PoolInfo.swift */; };
 		228C6B282BA30CC40085DE54 /* ViewController+CollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228C6B272BA30CC40085DE54 /* ViewController+CollectionViewLayout.swift */; };
 		228C6B2B2BA3159D0085DE54 /* StatisticData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228C6B2A2BA3159D0085DE54 /* StatisticData.swift */; };
 		228C6B2E2BA31B010085DE54 /* TrainingMenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228C6B2D2BA31B010085DE54 /* TrainingMenuCell.swift */; };
@@ -104,26 +98,14 @@
 		2232D3692B95569F00804F81 /* GlidingTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GlidingTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2232D36D2B95569F00804F81 /* GlidingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlidingTests.swift; sourceTree = "<group>"; };
 		2232D3732B95569F00804F81 /* GlidingUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GlidingUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		2232D3772B95569F00804F81 /* GlidingUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlidingUITests.swift; sourceTree = "<group>"; };
-		2232D3792B95569F00804F81 /* GlidingUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlidingUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		2232D38A2B95573500804F81 /* Gliding-watchapp Watch App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Gliding-watchapp Watch App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		2232D38C2B95573500804F81 /* Gliding_watchappApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gliding_watchappApp.swift; sourceTree = "<group>"; };
-		2232D38E2B95573500804F81 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		2232D3902B95573600804F81 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		2232D3932B95573600804F81 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		2232D3992B95573700804F81 /* Gliding-watchapp Watch AppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Gliding-watchapp Watch AppTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		2232D39D2B95573700804F81 /* Gliding_watchapp_Watch_AppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gliding_watchapp_Watch_AppTests.swift; sourceTree = "<group>"; };
 		2232D3A32B95573700804F81 /* Gliding-watchapp Watch AppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Gliding-watchapp Watch AppUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		2232D3A72B95573700804F81 /* Gliding_watchapp_Watch_AppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gliding_watchapp_Watch_AppUITests.swift; sourceTree = "<group>"; };
-		2232D3A92B95573700804F81 /* Gliding_watchapp_Watch_AppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gliding_watchapp_Watch_AppUITestsLaunchTests.swift; sourceTree = "<group>"; };
-		2232D3B82B955BF100804F81 /* PresetListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresetListCell.swift; sourceTree = "<group>"; };
-		2232D3BA2B955DC400804F81 /* PresetDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresetDetailView.swift; sourceTree = "<group>"; };
-		2232D3BC2B95779C00804F81 /* SwimComponentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwimComponentView.swift; sourceTree = "<group>"; };
-		2232D3BE2B96AD0F00804F81 /* SwimComponentModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwimComponentModel.swift; sourceTree = "<group>"; };
+		2232D3BE2B96AD0F00804F81 /* TrainingTableModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainingTableModel.swift; sourceTree = "<group>"; };
 		2232D3C02B96B87B00804F81 /* HealthData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthData.swift; sourceTree = "<group>"; };
 		2232D3C22B96BB2700804F81 /* Gliding.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Gliding.entitlements; sourceTree = "<group>"; };
-		2232D3C32B96BBB600804F81 /* Gliding-watchapp Watch App.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Gliding-watchapp Watch App.entitlements"; sourceTree = "<group>"; };
 		2250479F2BE1268A00B8DE22 /* WorkoutListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutListCell.swift; sourceTree = "<group>"; };
+		227C0F9A2C43B5E9006D42FB /* PoolInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PoolInfo.swift; sourceTree = "<group>"; };
 		228C6B272BA30CC40085DE54 /* ViewController+CollectionViewLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController+CollectionViewLayout.swift"; sourceTree = "<group>"; };
 		228C6B2A2BA3159D0085DE54 /* StatisticData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticData.swift; sourceTree = "<group>"; };
 		228C6B2D2BA31B010085DE54 /* TrainingMenuCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainingMenuCell.swift; sourceTree = "<group>"; };
@@ -137,6 +119,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				227C0F972C439168006D42FB /* RxSwift in Frameworks */,
+				227C0F952C439168006D42FB /* RxRelay in Frameworks */,
+				227C0F932C439168006D42FB /* RxCocoa in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -144,6 +129,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				227C0F992C439168006D42FB /* RxTest in Frameworks */,
+				227C0F912C439168006D42FB /* RxBlocking in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -183,10 +170,6 @@
 			children = (
 				2232D3522B95569D00804F81 /* Gliding */,
 				2232D36C2B95569F00804F81 /* GlidingTests */,
-				2232D3762B95569F00804F81 /* GlidingUITests */,
-				2232D38B2B95573500804F81 /* Gliding-watchapp Watch App */,
-				2232D39C2B95573700804F81 /* Gliding-watchapp Watch AppTests */,
-				2232D3A62B95573700804F81 /* Gliding-watchapp Watch AppUITests */,
 				2232D3512B95569D00804F81 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -232,55 +215,6 @@
 			path = GlidingTests;
 			sourceTree = "<group>";
 		};
-		2232D3762B95569F00804F81 /* GlidingUITests */ = {
-			isa = PBXGroup;
-			children = (
-				2232D3772B95569F00804F81 /* GlidingUITests.swift */,
-				2232D3792B95569F00804F81 /* GlidingUITestsLaunchTests.swift */,
-			);
-			path = GlidingUITests;
-			sourceTree = "<group>";
-		};
-		2232D38B2B95573500804F81 /* Gliding-watchapp Watch App */ = {
-			isa = PBXGroup;
-			children = (
-				2232D3C32B96BBB600804F81 /* Gliding-watchapp Watch App.entitlements */,
-				2232D38C2B95573500804F81 /* Gliding_watchappApp.swift */,
-				2232D38E2B95573500804F81 /* ContentView.swift */,
-				2232D3BA2B955DC400804F81 /* PresetDetailView.swift */,
-				2232D3BC2B95779C00804F81 /* SwimComponentView.swift */,
-				2232D3B82B955BF100804F81 /* PresetListCell.swift */,
-				2232D3902B95573600804F81 /* Assets.xcassets */,
-				2232D3922B95573600804F81 /* Preview Content */,
-			);
-			path = "Gliding-watchapp Watch App";
-			sourceTree = "<group>";
-		};
-		2232D3922B95573600804F81 /* Preview Content */ = {
-			isa = PBXGroup;
-			children = (
-				2232D3932B95573600804F81 /* Preview Assets.xcassets */,
-			);
-			path = "Preview Content";
-			sourceTree = "<group>";
-		};
-		2232D39C2B95573700804F81 /* Gliding-watchapp Watch AppTests */ = {
-			isa = PBXGroup;
-			children = (
-				2232D39D2B95573700804F81 /* Gliding_watchapp_Watch_AppTests.swift */,
-			);
-			path = "Gliding-watchapp Watch AppTests";
-			sourceTree = "<group>";
-		};
-		2232D3A62B95573700804F81 /* Gliding-watchapp Watch AppUITests */ = {
-			isa = PBXGroup;
-			children = (
-				2232D3A72B95573700804F81 /* Gliding_watchapp_Watch_AppUITests.swift */,
-				2232D3A92B95573700804F81 /* Gliding_watchapp_Watch_AppUITestsLaunchTests.swift */,
-			);
-			path = "Gliding-watchapp Watch AppUITests";
-			sourceTree = "<group>";
-		};
 		228C6B292BA3155C0085DE54 /* HomeScene */ = {
 			isa = PBXGroup;
 			children = (
@@ -305,7 +239,8 @@
 			isa = PBXGroup;
 			children = (
 				228C6B2A2BA3159D0085DE54 /* StatisticData.swift */,
-				2232D3BE2B96AD0F00804F81 /* SwimComponentModel.swift */,
+				2232D3BE2B96AD0F00804F81 /* TrainingTableModel.swift */,
+				227C0F9A2C43B5E9006D42FB /* PoolInfo.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -336,6 +271,11 @@
 				2232D3AC2B95573700804F81 /* PBXTargetDependency */,
 			);
 			name = Gliding;
+			packageProductDependencies = (
+				227C0F922C439168006D42FB /* RxCocoa */,
+				227C0F942C439168006D42FB /* RxRelay */,
+				227C0F962C439168006D42FB /* RxSwift */,
+			);
 			productName = Gliding;
 			productReference = 2232D3502B95569D00804F81 /* Gliding.app */;
 			productType = "com.apple.product-type.application";
@@ -354,6 +294,10 @@
 				2232D36B2B95569F00804F81 /* PBXTargetDependency */,
 			);
 			name = GlidingTests;
+			packageProductDependencies = (
+				227C0F902C439168006D42FB /* RxBlocking */,
+				227C0F982C439168006D42FB /* RxTest */,
+			);
 			productName = GlidingTests;
 			productReference = 2232D3692B95569F00804F81 /* GlidingTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
@@ -472,6 +416,9 @@
 				Base,
 			);
 			mainGroup = 2232D3472B95569D00804F81;
+			packageReferences = (
+				227C0F8F2C439168006D42FB /* XCRemoteSwiftPackageReference "RxSwift" */,
+			);
 			productRefGroup = 2232D3512B95569D00804F81 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -515,8 +462,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2232D3942B95573600804F81 /* Preview Assets.xcassets in Resources */,
-				2232D3912B95573600804F81 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -548,7 +493,8 @@
 				228C6B362BA31BC50085DE54 /* StatisticViewController.swift in Sources */,
 				2232D3542B95569D00804F81 /* AppDelegate.swift in Sources */,
 				228C6B302BA31B2B0085DE54 /* PoolInfoCell.swift in Sources */,
-				2232D3BF2B96AD0F00804F81 /* SwimComponentModel.swift in Sources */,
+				227C0F9B2C43B5E9006D42FB /* PoolInfo.swift in Sources */,
+				2232D3BF2B96AD0F00804F81 /* TrainingTableModel.swift in Sources */,
 				228C6B282BA30CC40085DE54 /* ViewController+CollectionViewLayout.swift in Sources */,
 				2232D3C12B96B87B00804F81 /* HealthData.swift in Sources */,
 				2232D35E2B95569D00804F81 /* Gliding.xcdatamodeld in Sources */,
@@ -569,8 +515,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2232D3782B95569F00804F81 /* GlidingUITests.swift in Sources */,
-				2232D37A2B95569F00804F81 /* GlidingUITestsLaunchTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -578,11 +522,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2232D3BD2B95779C00804F81 /* SwimComponentView.swift in Sources */,
-				2232D3B92B955BF100804F81 /* PresetListCell.swift in Sources */,
-				2232D38F2B95573500804F81 /* ContentView.swift in Sources */,
-				2232D3BB2B955DC400804F81 /* PresetDetailView.swift in Sources */,
-				2232D38D2B95573500804F81 /* Gliding_watchappApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -590,7 +529,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2232D39E2B95573700804F81 /* Gliding_watchapp_Watch_AppTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -598,8 +536,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2232D3A82B95573700804F81 /* Gliding_watchapp_Watch_AppUITests.swift in Sources */,
-				2232D3AA2B95573700804F81 /* Gliding_watchapp_Watch_AppUITestsLaunchTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -775,7 +711,6 @@
 		2232D37E2B95569F00804F81 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Gliding/Gliding.entitlements;
@@ -808,7 +743,6 @@
 		2232D37F2B95569F00804F81 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Gliding/Gliding.entitlements;
@@ -981,7 +915,6 @@
 		2232D3B32B95573700804F81 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -1002,7 +935,6 @@
 		2232D3B42B95573700804F81 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -1023,7 +955,6 @@
 		2232D3B62B95573700804F81 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = UUYBHY988H;
@@ -1043,7 +974,6 @@
 		2232D3B72B95573700804F81 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = UUYBHY988H;
@@ -1127,6 +1057,45 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		227C0F8F2C439168006D42FB /* XCRemoteSwiftPackageReference "RxSwift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ReactiveX/RxSwift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.7.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		227C0F902C439168006D42FB /* RxBlocking */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 227C0F8F2C439168006D42FB /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxBlocking;
+		};
+		227C0F922C439168006D42FB /* RxCocoa */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 227C0F8F2C439168006D42FB /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxCocoa;
+		};
+		227C0F942C439168006D42FB /* RxRelay */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 227C0F8F2C439168006D42FB /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxRelay;
+		};
+		227C0F962C439168006D42FB /* RxSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 227C0F8F2C439168006D42FB /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxSwift;
+		};
+		227C0F982C439168006D42FB /* RxTest */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 227C0F8F2C439168006D42FB /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxTest;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		2232D35C2B95569D00804F81 /* Gliding.xcdatamodeld */ = {
