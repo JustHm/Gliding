@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2207E24D2C44F2A7005A4FCA /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 2207E24C2C44F2A7005A4FCA /* SnapKit */; };
 		2232D3542B95569D00804F81 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2232D3532B95569D00804F81 /* AppDelegate.swift */; };
 		2232D3562B95569D00804F81 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2232D3552B95569D00804F81 /* SceneDelegate.swift */; };
 		2232D3582B95569D00804F81 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2232D3572B95569D00804F81 /* ViewController.swift */; };
@@ -29,7 +30,7 @@
 		228C6B2B2BA3159D0085DE54 /* StatisticData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228C6B2A2BA3159D0085DE54 /* StatisticData.swift */; };
 		228C6B2E2BA31B010085DE54 /* TrainingMenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228C6B2D2BA31B010085DE54 /* TrainingMenuCell.swift */; };
 		228C6B302BA31B2B0085DE54 /* PoolInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228C6B2F2BA31B2B0085DE54 /* PoolInfoCell.swift */; };
-		228C6B322BA31B540085DE54 /* SimpleStatisticCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228C6B312BA31B540085DE54 /* SimpleStatisticCell.swift */; };
+		228C6B322BA31B540085DE54 /* MainProfileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228C6B312BA31B540085DE54 /* MainProfileCell.swift */; };
 		228C6B362BA31BC50085DE54 /* StatisticViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228C6B352BA31BC50085DE54 /* StatisticViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -110,7 +111,7 @@
 		228C6B2A2BA3159D0085DE54 /* StatisticData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticData.swift; sourceTree = "<group>"; };
 		228C6B2D2BA31B010085DE54 /* TrainingMenuCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainingMenuCell.swift; sourceTree = "<group>"; };
 		228C6B2F2BA31B2B0085DE54 /* PoolInfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PoolInfoCell.swift; sourceTree = "<group>"; };
-		228C6B312BA31B540085DE54 /* SimpleStatisticCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleStatisticCell.swift; sourceTree = "<group>"; };
+		228C6B312BA31B540085DE54 /* MainProfileCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainProfileCell.swift; sourceTree = "<group>"; };
 		228C6B352BA31BC50085DE54 /* StatisticViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -120,6 +121,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				227C0F972C439168006D42FB /* RxSwift in Frameworks */,
+				2207E24D2C44F2A7005A4FCA /* SnapKit in Frameworks */,
 				227C0F952C439168006D42FB /* RxRelay in Frameworks */,
 				227C0F932C439168006D42FB /* RxCocoa in Frameworks */,
 			);
@@ -230,7 +232,7 @@
 			children = (
 				228C6B2D2BA31B010085DE54 /* TrainingMenuCell.swift */,
 				228C6B2F2BA31B2B0085DE54 /* PoolInfoCell.swift */,
-				228C6B312BA31B540085DE54 /* SimpleStatisticCell.swift */,
+				228C6B312BA31B540085DE54 /* MainProfileCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -275,6 +277,7 @@
 				227C0F922C439168006D42FB /* RxCocoa */,
 				227C0F942C439168006D42FB /* RxRelay */,
 				227C0F962C439168006D42FB /* RxSwift */,
+				2207E24C2C44F2A7005A4FCA /* SnapKit */,
 			);
 			productName = Gliding;
 			productReference = 2232D3502B95569D00804F81 /* Gliding.app */;
@@ -418,6 +421,7 @@
 			mainGroup = 2232D3472B95569D00804F81;
 			packageReferences = (
 				227C0F8F2C439168006D42FB /* XCRemoteSwiftPackageReference "RxSwift" */,
+				2207E24B2C44F2A7005A4FCA /* XCRemoteSwiftPackageReference "SnapKit" */,
 			);
 			productRefGroup = 2232D3512B95569D00804F81 /* Products */;
 			projectDirPath = "";
@@ -488,7 +492,7 @@
 			files = (
 				225047A02BE1268A00B8DE22 /* WorkoutListCell.swift in Sources */,
 				228C6B2B2BA3159D0085DE54 /* StatisticData.swift in Sources */,
-				228C6B322BA31B540085DE54 /* SimpleStatisticCell.swift in Sources */,
+				228C6B322BA31B540085DE54 /* MainProfileCell.swift in Sources */,
 				2232D3582B95569D00804F81 /* ViewController.swift in Sources */,
 				228C6B362BA31BC50085DE54 /* StatisticViewController.swift in Sources */,
 				2232D3542B95569D00804F81 /* AppDelegate.swift in Sources */,
@@ -1059,6 +1063,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		2207E24B2C44F2A7005A4FCA /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.7.1;
+			};
+		};
 		227C0F8F2C439168006D42FB /* XCRemoteSwiftPackageReference "RxSwift" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/ReactiveX/RxSwift";
@@ -1070,6 +1082,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		2207E24C2C44F2A7005A4FCA /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2207E24B2C44F2A7005A4FCA /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
 		227C0F902C439168006D42FB /* RxBlocking */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 227C0F8F2C439168006D42FB /* XCRemoteSwiftPackageReference "RxSwift" */;

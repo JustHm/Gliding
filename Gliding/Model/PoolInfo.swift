@@ -7,7 +7,7 @@
 
 import UIKit
 
-struct PoolInfo {
+struct PoolInfo: Hashable {
     var id: String
     var name: String
     var image: UIImage

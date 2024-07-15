@@ -8,5 +8,5 @@
 import UIKit
 
 class TrainingMenuCell: UICollectionViewCell {
-    
+    static let identifier = String(describing: TrainingMenuCell.self)
 }

@@ -8,5 +8,5 @@
 import UIKit
 
 class PoolInfoCell: UICollectionViewCell {
-    
+    static let identifier = String(describing: PoolInfoCell.self)
 }
