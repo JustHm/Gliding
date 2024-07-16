@@ -9,4 +9,7 @@ import UIKit
 
 class MainProfileCell: UICollectionViewCell {
     static let identifier = String(describing: MainProfileCell.self)
+    var isWorkoutToday: Bool = false
+    var distance: Int = 0
+    var calories: Int = 0
 }

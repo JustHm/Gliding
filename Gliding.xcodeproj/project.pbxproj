@@ -28,7 +28,7 @@
 		227C0F9B2C43B5E9006D42FB /* PoolInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227C0F9A2C43B5E9006D42FB /* PoolInfo.swift */; };
 		228C6B282BA30CC40085DE54 /* ViewController+CollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228C6B272BA30CC40085DE54 /* ViewController+CollectionViewLayout.swift */; };
 		228C6B2B2BA3159D0085DE54 /* StatisticData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228C6B2A2BA3159D0085DE54 /* StatisticData.swift */; };
-		228C6B2E2BA31B010085DE54 /* TrainingMenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228C6B2D2BA31B010085DE54 /* TrainingMenuCell.swift */; };
+		228C6B2E2BA31B010085DE54 /* SwimTipCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228C6B2D2BA31B010085DE54 /* SwimTipCell.swift */; };
 		228C6B302BA31B2B0085DE54 /* PoolInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228C6B2F2BA31B2B0085DE54 /* PoolInfoCell.swift */; };
 		228C6B322BA31B540085DE54 /* MainProfileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228C6B312BA31B540085DE54 /* MainProfileCell.swift */; };
 		228C6B362BA31BC50085DE54 /* StatisticViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228C6B352BA31BC50085DE54 /* StatisticViewController.swift */; };
@@ -109,7 +109,7 @@
 		227C0F9A2C43B5E9006D42FB /* PoolInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PoolInfo.swift; sourceTree = "<group>"; };
 		228C6B272BA30CC40085DE54 /* ViewController+CollectionViewLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController+CollectionViewLayout.swift"; sourceTree = "<group>"; };
 		228C6B2A2BA3159D0085DE54 /* StatisticData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticData.swift; sourceTree = "<group>"; };
-		228C6B2D2BA31B010085DE54 /* TrainingMenuCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainingMenuCell.swift; sourceTree = "<group>"; };
+		228C6B2D2BA31B010085DE54 /* SwimTipCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwimTipCell.swift; sourceTree = "<group>"; };
 		228C6B2F2BA31B2B0085DE54 /* PoolInfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PoolInfoCell.swift; sourceTree = "<group>"; };
 		228C6B312BA31B540085DE54 /* MainProfileCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainProfileCell.swift; sourceTree = "<group>"; };
 		228C6B352BA31BC50085DE54 /* StatisticViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticViewController.swift; sourceTree = "<group>"; };
@@ -230,7 +230,7 @@
 		228C6B2C2BA31AD60085DE54 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
-				228C6B2D2BA31B010085DE54 /* TrainingMenuCell.swift */,
+				228C6B2D2BA31B010085DE54 /* SwimTipCell.swift */,
 				228C6B2F2BA31B2B0085DE54 /* PoolInfoCell.swift */,
 				228C6B312BA31B540085DE54 /* MainProfileCell.swift */,
 			);
@@ -503,7 +503,7 @@
 				2232D3C12B96B87B00804F81 /* HealthData.swift in Sources */,
 				2232D35E2B95569D00804F81 /* Gliding.xcdatamodeld in Sources */,
 				2232D3562B95569D00804F81 /* SceneDelegate.swift in Sources */,
-				228C6B2E2BA31B010085DE54 /* TrainingMenuCell.swift in Sources */,
+				228C6B2E2BA31B010085DE54 /* SwimTipCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

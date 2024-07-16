@@ -32,11 +32,11 @@ extension ViewController {
     
     private func createSection(for sectionIndex: Int) -> NSCollectionLayoutSection {
         switch sectionIndex {
-        case 0:
+        case 0: // main
             return createMainSection()
-        case 1:
-            return createPoolSection()
-        case 2:
+        case 1: // pool
+            return createHorizontalScrollingSection()
+        case 2: // swim tip
             return createHorizontalScrollingSection()
         default:
             return createMainSection() // 임시
@@ -56,27 +56,16 @@ extension ViewController {
         return section
     }
     
-    private func createPoolSection() -> NSCollectionLayoutSection {
+    private func createHorizontalScrollingSection() -> NSCollectionLayoutSection {
         let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1))
         let item = NSCollectionLayoutItem(layoutSize: itemSize)
         
-        let groupSize = NSCollectionLayoutSize(widthDimension: .estimated(200), heightDimension: .estimated(300))
+        let groupSize = NSCollectionLayoutSize(widthDimension: .estimated(200), heightDimension: .estimated(300)) //heightDimension: .fractionalHeight(0.3)
         let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
         
         let section = NSCollectionLayoutSection(group: group)
         section.interGroupSpacing = 10
         section.orthogonalScrollingBehavior = .continuous
-        return section
-    }
-    
-    private func createHorizontalScrollingSection() -> NSCollectionLayoutSection {
-        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalHeight(1.0))
-        let item = NSCollectionLayoutItem(layoutSize: itemSize)
-        
-        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalHeight(0.3))
-        let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
-        
-        let section = NSCollectionLayoutSection(group: group)
         return section
     }
 }
