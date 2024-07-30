@@ -7,23 +7,44 @@
 
 import UIKit
 import SnapKit
+import RxSwift
 
 class ViewController: UIViewController {
     typealias DataSource = UICollectionViewDiffableDataSource<HomeSection, HomeSectionItem>
     var dataSource: DataSource?
+    private var viewModel: HomeViewModel!
+    private let disposeBag = DisposeBag()
+    
     lazy var collectionView: UICollectionView = {
         let collection = UICollectionView(frame: .zero, collectionViewLayout: makeCollectionView())
-        
+        collection.backgroundColor = .green
         return collection
     }()
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        bindViewModel()
+        setupLayout()
         configureCollectionView()
+        fetchCollectionViewData(data: [.statistic(StatisticData(workoutDone: false, date: Date()))], section: .mainStatistic)
+    }
+    
+    private func bindViewModel() {
+        
+    }
+    
+    private func setupLayout() {
+        view.addSubview(collectionView)
+        collectionView.snp.makeConstraints{
+            $0.edges.equalToSuperview()
+        }
     }
     
     private func fetchCollectionViewData(data: [HomeSectionItem], section: HomeSection) {
         var snapshot = NSDiffableDataSourceSnapshot<HomeSection, HomeSectionItem>()
+        snapshot.appendSections([section])
         snapshot.appendItems(data, toSection: section)
         dataSource?.apply(snapshot)
     }
@@ -55,3 +76,6 @@ class ViewController: UIViewController {
     
 }
 
+#Preview(traits: .portrait, body: {
+    ViewController()
+})
