@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		2207E24D2C44F2A7005A4FCA /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 2207E24C2C44F2A7005A4FCA /* SnapKit */; };
 		222CC0752C58CE940069C1B5 /* ShareModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222CC0742C58CE940069C1B5 /* ShareModel.swift */; };
+		222CC0772C5A2CE10069C1B5 /* ArticleModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222CC0762C5A2CE10069C1B5 /* ArticleModel.swift */; };
+		222CC0792C5A31900069C1B5 /* TrainingDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222CC0782C5A31900069C1B5 /* TrainingDatabase.swift */; };
 		2232D3542B95569D00804F81 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2232D3532B95569D00804F81 /* AppDelegate.swift */; };
 		2232D3562B95569D00804F81 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2232D3552B95569D00804F81 /* SceneDelegate.swift */; };
 		2232D3582B95569D00804F81 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2232D3572B95569D00804F81 /* ViewController.swift */; };
@@ -20,7 +22,6 @@
 		2232D3C12B96B87B00804F81 /* HealthData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2232D3C02B96B87B00804F81 /* HealthData.swift */; };
 		22408B9F2C48F32D003ABF30 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22408B9E2C48F32D003ABF30 /* HomeViewModel.swift */; };
 		22408BA12C48F52A003ABF30 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22408BA02C48F52A003ABF30 /* ViewModel.swift */; };
-		225047A02BE1268A00B8DE22 /* WorkoutListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2250479F2BE1268A00B8DE22 /* WorkoutListCell.swift */; };
 		227C0F912C439168006D42FB /* RxBlocking in Frameworks */ = {isa = PBXBuildFile; productRef = 227C0F902C439168006D42FB /* RxBlocking */; };
 		227C0F932C439168006D42FB /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 227C0F922C439168006D42FB /* RxCocoa */; };
 		227C0F952C439168006D42FB /* RxRelay in Frameworks */ = {isa = PBXBuildFile; productRef = 227C0F942C439168006D42FB /* RxRelay */; };
@@ -60,6 +61,8 @@
 
 /* Begin PBXFileReference section */
 		222CC0742C58CE940069C1B5 /* ShareModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareModel.swift; sourceTree = "<group>"; };
+		222CC0762C5A2CE10069C1B5 /* ArticleModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleModel.swift; sourceTree = "<group>"; };
+		222CC0782C5A31900069C1B5 /* TrainingDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainingDatabase.swift; sourceTree = "<group>"; };
 		2232D3502B95569D00804F81 /* Gliding.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Gliding.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2232D3532B95569D00804F81 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2232D3552B95569D00804F81 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -75,7 +78,6 @@
 		2232D3C22B96BB2700804F81 /* Gliding.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Gliding.entitlements; sourceTree = "<group>"; };
 		22408B9E2C48F32D003ABF30 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		22408BA02C48F52A003ABF30 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
-		2250479F2BE1268A00B8DE22 /* WorkoutListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutListCell.swift; sourceTree = "<group>"; };
 		227C0F9A2C43B5E9006D42FB /* PoolInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PoolInfo.swift; sourceTree = "<group>"; };
 		228C6B272BA30CC40085DE54 /* ViewController+CollectionViewLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController+CollectionViewLayout.swift"; sourceTree = "<group>"; };
 		228C6B2A2BA3159D0085DE54 /* StatisticData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticData.swift; sourceTree = "<group>"; };
@@ -109,6 +111,36 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		222CC07A2C5D0AC20069C1B5 /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+				2232D3C02B96B87B00804F81 /* HealthData.swift */,
+				222CC0782C5A31900069C1B5 /* TrainingDatabase.swift */,
+			);
+			path = Repository;
+			sourceTree = "<group>";
+		};
+		222CC07B2C5D0AD00069C1B5 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		222CC07C2C5D0AE40069C1B5 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				2232D3532B95569D00804F81 /* AppDelegate.swift */,
+				2232D3552B95569D00804F81 /* SceneDelegate.swift */,
+				2232D35C2B95569D00804F81 /* Gliding.xcdatamodeld */,
+				2232D3642B95569F00804F81 /* Info.plist */,
+				2232D35F2B95569F00804F81 /* Assets.xcassets */,
+				2232D3C22B96BB2700804F81 /* Gliding.entitlements */,
+				2232D3612B95569F00804F81 /* LaunchScreen.storyboard */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
 		2232D3472B95569D00804F81 = {
 			isa = PBXGroup;
 			children = (
@@ -130,18 +162,12 @@
 		2232D3522B95569D00804F81 /* Gliding */ = {
 			isa = PBXGroup;
 			children = (
-				2232D3C22B96BB2700804F81 /* Gliding.entitlements */,
-				2232D3532B95569D00804F81 /* AppDelegate.swift */,
-				2232D3552B95569D00804F81 /* SceneDelegate.swift */,
+				222CC07C2C5D0AE40069C1B5 /* App */,
 				228C6B342BA31B9E0085DE54 /* StatisticScene */,
 				228C6B332BA31B710085DE54 /* Model */,
 				228C6B292BA3155C0085DE54 /* HomeScene */,
-				2232D35F2B95569F00804F81 /* Assets.xcassets */,
-				2232D3612B95569F00804F81 /* LaunchScreen.storyboard */,
-				2232D3642B95569F00804F81 /* Info.plist */,
-				2232D35C2B95569D00804F81 /* Gliding.xcdatamodeld */,
-				2232D3C02B96B87B00804F81 /* HealthData.swift */,
-				2250479F2BE1268A00B8DE22 /* WorkoutListCell.swift */,
+				222CC07B2C5D0AD00069C1B5 /* Service */,
+				222CC07A2C5D0AC20069C1B5 /* Repository */,
 			);
 			path = Gliding;
 			sourceTree = "<group>";
@@ -183,6 +209,7 @@
 				2232D3BE2B96AD0F00804F81 /* TrainingTableModel.swift */,
 				228C6B2A2BA3159D0085DE54 /* StatisticData.swift */,
 				227C0F9A2C43B5E9006D42FB /* PoolInfo.swift */,
+				222CC0762C5A2CE10069C1B5 /* ArticleModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -310,7 +337,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				225047A02BE1268A00B8DE22 /* WorkoutListCell.swift in Sources */,
 				228C6B2B2BA3159D0085DE54 /* StatisticData.swift in Sources */,
 				228C6B322BA31B540085DE54 /* MainProfileCell.swift in Sources */,
 				2232D3582B95569D00804F81 /* ViewController.swift in Sources */,
@@ -320,12 +346,14 @@
 				228C6B302BA31B2B0085DE54 /* PoolInfoCell.swift in Sources */,
 				227C0F9B2C43B5E9006D42FB /* PoolInfo.swift in Sources */,
 				2232D3BF2B96AD0F00804F81 /* TrainingTableModel.swift in Sources */,
+				222CC0772C5A2CE10069C1B5 /* ArticleModel.swift in Sources */,
 				228C6B282BA30CC40085DE54 /* ViewController+CollectionViewLayout.swift in Sources */,
 				2232D3C12B96B87B00804F81 /* HealthData.swift in Sources */,
 				2232D35E2B95569D00804F81 /* Gliding.xcdatamodeld in Sources */,
 				2232D3562B95569D00804F81 /* SceneDelegate.swift in Sources */,
 				22408B9F2C48F32D003ABF30 /* HomeViewModel.swift in Sources */,
 				222CC0752C58CE940069C1B5 /* ShareModel.swift in Sources */,
+				222CC0792C5A31900069C1B5 /* TrainingDatabase.swift in Sources */,
 				228C6B2E2BA31B010085DE54 /* SwimTipCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
