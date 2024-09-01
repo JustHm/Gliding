@@ -11,6 +11,7 @@
 		222CC0752C58CE940069C1B5 /* ShareModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222CC0742C58CE940069C1B5 /* ShareModel.swift */; };
 		222CC0772C5A2CE10069C1B5 /* ArticleModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222CC0762C5A2CE10069C1B5 /* ArticleModel.swift */; };
 		222CC0792C5A31900069C1B5 /* TrainingDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222CC0782C5A31900069C1B5 /* TrainingDatabase.swift */; };
+		222CC07E2C5D19EA0069C1B5 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222CC07D2C5D19EA0069C1B5 /* MainTabBarController.swift */; };
 		2232D3542B95569D00804F81 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2232D3532B95569D00804F81 /* AppDelegate.swift */; };
 		2232D3562B95569D00804F81 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2232D3552B95569D00804F81 /* SceneDelegate.swift */; };
 		2232D3582B95569D00804F81 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2232D3572B95569D00804F81 /* ViewController.swift */; };
@@ -22,6 +23,7 @@
 		2232D3C12B96B87B00804F81 /* HealthData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2232D3C02B96B87B00804F81 /* HealthData.swift */; };
 		22408B9F2C48F32D003ABF30 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22408B9E2C48F32D003ABF30 /* HomeViewModel.swift */; };
 		22408BA12C48F52A003ABF30 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22408BA02C48F52A003ABF30 /* ViewModel.swift */; };
+		2257541A2C7DA29B001DE328 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225754192C7DA29B001DE328 /* LocationManager.swift */; };
 		227C0F912C439168006D42FB /* RxBlocking in Frameworks */ = {isa = PBXBuildFile; productRef = 227C0F902C439168006D42FB /* RxBlocking */; };
 		227C0F932C439168006D42FB /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 227C0F922C439168006D42FB /* RxCocoa */; };
 		227C0F952C439168006D42FB /* RxRelay in Frameworks */ = {isa = PBXBuildFile; productRef = 227C0F942C439168006D42FB /* RxRelay */; };
@@ -63,6 +65,7 @@
 		222CC0742C58CE940069C1B5 /* ShareModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareModel.swift; sourceTree = "<group>"; };
 		222CC0762C5A2CE10069C1B5 /* ArticleModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleModel.swift; sourceTree = "<group>"; };
 		222CC0782C5A31900069C1B5 /* TrainingDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainingDatabase.swift; sourceTree = "<group>"; };
+		222CC07D2C5D19EA0069C1B5 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		2232D3502B95569D00804F81 /* Gliding.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Gliding.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2232D3532B95569D00804F81 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2232D3552B95569D00804F81 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -78,6 +81,7 @@
 		2232D3C22B96BB2700804F81 /* Gliding.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Gliding.entitlements; sourceTree = "<group>"; };
 		22408B9E2C48F32D003ABF30 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		22408BA02C48F52A003ABF30 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
+		225754192C7DA29B001DE328 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		227C0F9A2C43B5E9006D42FB /* PoolInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PoolInfo.swift; sourceTree = "<group>"; };
 		228C6B272BA30CC40085DE54 /* ViewController+CollectionViewLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController+CollectionViewLayout.swift"; sourceTree = "<group>"; };
 		228C6B2A2BA3159D0085DE54 /* StatisticData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticData.swift; sourceTree = "<group>"; };
@@ -116,6 +120,7 @@
 			children = (
 				2232D3C02B96B87B00804F81 /* HealthData.swift */,
 				222CC0782C5A31900069C1B5 /* TrainingDatabase.swift */,
+				225754192C7DA29B001DE328 /* LocationManager.swift */,
 			);
 			path = Repository;
 			sourceTree = "<group>";
@@ -135,7 +140,6 @@
 				2232D35C2B95569D00804F81 /* Gliding.xcdatamodeld */,
 				2232D3642B95569F00804F81 /* Info.plist */,
 				2232D35F2B95569F00804F81 /* Assets.xcassets */,
-				2232D3C22B96BB2700804F81 /* Gliding.entitlements */,
 				2232D3612B95569F00804F81 /* LaunchScreen.storyboard */,
 			);
 			path = App;
@@ -162,6 +166,7 @@
 		2232D3522B95569D00804F81 /* Gliding */ = {
 			isa = PBXGroup;
 			children = (
+				2232D3C22B96BB2700804F81 /* Gliding.entitlements */,
 				222CC07C2C5D0AE40069C1B5 /* App */,
 				228C6B342BA31B9E0085DE54 /* StatisticScene */,
 				228C6B332BA31B710085DE54 /* Model */,
@@ -188,6 +193,7 @@
 				2232D3572B95569D00804F81 /* ViewController.swift */,
 				22408B9E2C48F32D003ABF30 /* HomeViewModel.swift */,
 				228C6B272BA30CC40085DE54 /* ViewController+CollectionViewLayout.swift */,
+				222CC07D2C5D19EA0069C1B5 /* MainTabBarController.swift */,
 			);
 			path = HomeScene;
 			sourceTree = "<group>";
@@ -349,7 +355,9 @@
 				222CC0772C5A2CE10069C1B5 /* ArticleModel.swift in Sources */,
 				228C6B282BA30CC40085DE54 /* ViewController+CollectionViewLayout.swift in Sources */,
 				2232D3C12B96B87B00804F81 /* HealthData.swift in Sources */,
+				2257541A2C7DA29B001DE328 /* LocationManager.swift in Sources */,
 				2232D35E2B95569D00804F81 /* Gliding.xcdatamodeld in Sources */,
+				222CC07E2C5D19EA0069C1B5 /* MainTabBarController.swift in Sources */,
 				2232D3562B95569D00804F81 /* SceneDelegate.swift in Sources */,
 				22408B9F2C48F32D003ABF30 /* HomeViewModel.swift in Sources */,
 				222CC0752C58CE940069C1B5 /* ShareModel.swift in Sources */,

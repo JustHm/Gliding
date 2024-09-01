@@ -52,6 +52,7 @@ class ViewController: UIViewController {
     
     private func configureCollectionView() {
         let mainCellRegistration = UICollectionView.CellRegistration<MainProfileCell,HomeSectionItem> {cell,indexPath,itemIdentifier in
+            itemIdentifier
             //            cell.configure()
         }
         let poolCellRegistration = UICollectionView.CellRegistration<PoolInfoCell,HomeSectionItem> {cell,indexPath,itemIdentifier in
@@ -76,7 +77,3 @@ class ViewController: UIViewController {
     }
     
 }
-
-#Preview(traits: .portrait, body: {
-    ViewController()
-})
