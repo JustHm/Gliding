@@ -12,13 +12,24 @@ enum HomeSection: Int, Hashable{
 //    case shareMenu    //trainning table share list
     case poolInfo
     case tip
+    
+    var header: String {
+        switch self {
+        case .mainStatistic:
+            return "오늘 운동"
+        case .poolInfo:
+            return "내 근처의 수영장"
+        case .tip:
+            return "수영 팁"
+        }
+    }
 }
 
 // Item
 enum HomeSectionItem: Hashable {
-    case statistic(StatisticData) //single card
+    case statistic(StatisticData?) //single card
 //    case trainingMenu(TrainingTableModel)
-    case pool(PoolInfo) // horizontal scroll
+    case pool(PoolInfo?) // horizontal scroll
     case tip // like banner
 }
 

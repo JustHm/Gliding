@@ -14,9 +14,13 @@ class ViewController: UIViewController {
     var dataSource: DataSource?
     private var viewModel: HomeViewModel!
     private let disposeBag = DisposeBag()
-    
+    lazy var refreshControl: UIRefreshControl = {
+        let refresh = UIRefreshControl()
+        return refresh
+    }()
     lazy var collectionView: UICollectionView = {
         let collection = UICollectionView(frame: .zero, collectionViewLayout: makeCollectionView())
+        collection.delegate = self
         collection.backgroundColor = .green
         return collection
     }()
@@ -26,13 +30,20 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         viewModel = HomeViewModel()
-        bindViewModel()
+        
         setupLayout()
         configureCollectionView()
-        fetchCollectionViewData(data: [.statistic(StatisticData(workoutDone: false, date: Date()))], section: .mainStatistic)
+        bindViewModel()
     }
     
     private func bindViewModel() {
+        let refreshObservable = collectionView.refreshControl?.rx.controlEvent(.valueChanged)
+            .map { [weak self] in
+                self?.collectionView.refreshControl?.isRefreshing ?? false
+            }
+            .asObservable() ?? Observable.just(false)
+        
+        let input = HomeViewModel.Input(refresh: refreshObservable)
         
     }
     
@@ -51,29 +62,49 @@ class ViewController: UIViewController {
     }
     
     private func configureCollectionView() {
-        let mainCellRegistration = UICollectionView.CellRegistration<MainProfileCell,HomeSectionItem> {cell,indexPath,itemIdentifier in
-            itemIdentifier
-            //            cell.configure()
-        }
-        let poolCellRegistration = UICollectionView.CellRegistration<PoolInfoCell,HomeSectionItem> {cell,indexPath,itemIdentifier in
-            //            cell.configure()
-        }
-        let tipCellRegistration = UICollectionView.CellRegistration<SwimTipCell,HomeSectionItem> {cell,indexPath,itemIdentifier in
-            //            cell.configure()
+        let cellRegistration = UICollectionView.CellRegistration<UICollectionViewCell, HomeSectionItem> {cell,indexPath,itemIdentifier in
+            switch itemIdentifier {
+            case .pool(let data):
+                if let poolCell = cell as? PoolInfoCell {
+                    poolCell.configure(poolInfo: data)
+                }
+            case .statistic(let data):
+                if let statisticCell = cell as? MainProfileCell {
+                    statisticCell.configure(data: data)
+                }
+            case .tip:
+                if let tipCell = cell as? SwimTipCell {
+                    tipCell.configure(title: "data")
+                }
+            }
         }
         
         dataSource = DataSource(collectionView: collectionView, cellProvider: { collectionView, indexPath, itemIdentifier in
             switch indexPath.section {
             case 0: // Main Statistic (Simple)
-                collectionView.dequeueConfiguredReusableCell(using: mainCellRegistration, for: indexPath, item: itemIdentifier)
+                collectionView.dequeueConfiguredReusableCell(using: cellRegistration, for: indexPath, item: itemIdentifier)
             case 1: // PoolInfo
-                collectionView.dequeueConfiguredReusableCell(using: poolCellRegistration, for: indexPath, item: itemIdentifier)
+                collectionView.dequeueConfiguredReusableCell(using: cellRegistration, for: indexPath, item: itemIdentifier)
             case 2: // Tip
-                collectionView.dequeueConfiguredReusableCell(using: tipCellRegistration, for: indexPath, item: itemIdentifier)
+                collectionView.dequeueConfiguredReusableCell(using: cellRegistration, for: indexPath, item: itemIdentifier)
             default:
-                collectionView.dequeueConfiguredReusableCell(using: tipCellRegistration, for: indexPath, item: itemIdentifier)
+                collectionView.dequeueConfiguredReusableCell(using: cellRegistration, for: indexPath, item: itemIdentifier)
             }
         })
+        //        collectionView.refreshControl
     }
-    
+}
+
+extension ViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard let item = dataSource?.itemIdentifier(for: indexPath) else { return }
+        switch item {
+        case .statistic(let data): // move to statistics Tab
+            break;
+        case .pool(let data): // move to PoolDetail View
+            break;
+        case .tip: // move to Tip Article View
+            break;
+        }
+    }
 }

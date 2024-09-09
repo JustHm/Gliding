@@ -9,4 +9,12 @@ import UIKit
 
 class SwimTipCell: UICollectionViewCell {
     static let identifier = String(describing: SwimTipCell.self)
+    
+    public func configure(title: String) {
+        setupLayout()
+    }
+    
+    private func setupLayout() {
+        contentView.backgroundColor = .cyan
+    }
 }

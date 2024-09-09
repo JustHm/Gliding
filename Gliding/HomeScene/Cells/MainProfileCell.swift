@@ -12,4 +12,12 @@ class MainProfileCell: UICollectionViewCell {
     var isWorkoutToday: Bool = false
     var distance: Int = 0
     var calories: Int = 0
+    
+    public func configure(data: StatisticData?) {
+        setupLayout()
+    }
+    
+    private func setupLayout() {
+        contentView.backgroundColor = .cyan
+    }
 }

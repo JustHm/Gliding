@@ -8,7 +8,7 @@
 import Foundation
 import HealthKit
 
-class HealthData {
+final class HealthData {
     static let instance: HealthData = HealthData() //Swift Singleton은 생성에 한해서 Thread-safe
     
     private let store = HKHealthStore()
@@ -26,24 +26,21 @@ class HealthData {
         HKQuantityType(.activeEnergyBurned)
     ]
     
-    func requestAuthorization() async throws {
+    func requestAuthorization(completion: @escaping (Bool,(Error)?) -> Void) {
         guard HKHealthStore.isHealthDataAvailable() else { throw HealthKitError.notExist}
         let read = Set(quantityIdentifier)
-        let status = try await store.statusForAuthorizationRequest(toShare: [], read: read)
-        
-        switch status {
-        case .unnecessary:
-            break
-        case .shouldRequest:
-            try await store.requestAuthorization(toShare: [], read: read)
-        case .unknown:
-            throw HealthKitError.unknown
-        @unknown default:
-            throw HealthKitError.unknown
-        }
-        
-        
-        
+        store.requestAuthorization(toShare: [], read: read, completion: completion)
+//        
+//        switch status {
+//        case .unnecessary:
+//            break
+//        case .shouldRequest:
+//            store.requestAuthorization(toShare: [], read: read) { _, _ in }
+//        case .unknown:
+//            throw HealthKitError.unknown
+//        @unknown default:
+//            throw HealthKitError.unknown
+//        }
     }
     
     func getSwimmingData() async throws {

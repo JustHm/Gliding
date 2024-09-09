@@ -26,19 +26,23 @@ class PoolInfoCell: UICollectionViewCell {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        setupLayout()
+//        setupLayout()
     }
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    public func configure(address: String, name: String, phone: String, website: String) {
-        self.address = address
-        self.name = name
-        self.phone = phone
-        self.website = website
+    public func configure(poolInfo: PoolInfo?) {
+        if let poolInfo {
+            self.address = poolInfo.address
+            self.name = poolInfo.name
+            self.phone = poolInfo.phone
+            self.website = poolInfo.website
+        }
+        setupLayout()
     }
     private func setupLayout() {
+        contentView.backgroundColor = .cyan
         contentView.addSubview(nameField)
         
         nameField.snp.makeConstraints {
