@@ -8,6 +8,7 @@
 import UIKit
 import SnapKit
 import RxSwift
+import RxRelay
 
 class ViewController: UIViewController {
     typealias DataSource = UICollectionViewDiffableDataSource<HomeSection, HomeSectionItem>
@@ -37,14 +38,38 @@ class ViewController: UIViewController {
     }
     
     private func bindViewModel() {
-        let refreshObservable = collectionView.refreshControl?.rx.controlEvent(.valueChanged)
-            .map { [weak self] in
-                self?.collectionView.refreshControl?.isRefreshing ?? false
+        let refreshLoading = PublishRelay<Bool>()
+        refreshControl.rx.controlEvent(.valueChanged)
+            .bind(onNext: { [weak self] _ in
+                // 아래코드: viewModel에서 발생한다고 가정
+                DispatchQueue.main.asyncAfter(wallDeadline: .now() + 3) { [weak self] in
+                    refreshLoading.accept(true)
+                }
+            }).disposed(by: disposeBag)
+        
+        let input = HomeViewModel.Input(refresh: refreshLoading)
+        let output = viewModel.transform(input: input)
+        
+        output.today
+            .drive(onNext: { [weak self] data in
+                let data = HomeSectionItem.statistic(data)
+                self?.fetchCollectionViewData(data: [data], section: .mainStatistic)
+            })
+            .disposed(by: disposeBag)
+        
+        output.poolList
+            .map {$0.compactMap{HomeSectionItem.pool($0)}}
+            .drive { [weak self] data in
+                self?.fetchCollectionViewData(data: data, section: .poolInfo)
             }
-            .asObservable() ?? Observable.just(false)
+            .disposed(by: disposeBag)
         
-        let input = HomeViewModel.Input(refresh: refreshObservable)
-        
+        output.swimTip
+            .map {$0.compactMap{HomeSectionItem.tip($0)}}
+            .drive { [weak self] data in
+                self?.fetchCollectionViewData(data: data, section: .poolInfo)
+            }
+            .disposed(by: disposeBag)
     }
     
     private func setupLayout() {
@@ -91,7 +116,8 @@ class ViewController: UIViewController {
                 collectionView.dequeueConfiguredReusableCell(using: cellRegistration, for: indexPath, item: itemIdentifier)
             }
         })
-        //        collectionView.refreshControl
+        refreshControl.endRefreshing()
+        collectionView.refreshControl = refreshControl
     }
 }
 

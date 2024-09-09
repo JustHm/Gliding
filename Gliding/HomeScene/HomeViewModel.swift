@@ -12,11 +12,11 @@ import RxCocoa
 
 final class HomeViewModel: ViewModel {
     struct Input { //event stream
-        let refresh: Observable<Bool>
+        let refresh: PublishRelay<Bool>
     }
     struct Output {//result stream
         let today: Driver<StatisticData?> // 오늘 운동데이터 (간단한 정보만)
-//        let trainingList: Driver<[TrainingTableModel]> // 즐겨찾기 한 훈련표 리스트
+        //        let trainingList: Driver<[TrainingTableModel]> // 즐겨찾기 한 훈련표 리스트
         let swimTip: Driver<[ArticleModel]> // 수영 팁 아티클 리스트
         let poolList: Driver<[PoolInfo]> // 수영장 정보 리스트
     }
@@ -60,9 +60,10 @@ final class HomeViewModel: ViewModel {
     
     
     func transform(input: Input) -> Output {
-        input.refresh.subscribe { [weak self] value in
-            if value { self?.refreshData()}
-        }.disposed(by: disposeBag)
+        input.refresh
+            .filter{$0}
+            .subscribe { [weak self] _ in self?.refreshData()}
+            .disposed(by: disposeBag)
         
         let today = todayRelay.asDriver(onErrorJustReturn: nil)
         let poolList = poolListRelay.asDriver(onErrorJustReturn: [])

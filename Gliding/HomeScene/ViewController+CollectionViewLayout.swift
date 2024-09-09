@@ -29,8 +29,8 @@ enum HomeSection: Int, Hashable{
 enum HomeSectionItem: Hashable {
     case statistic(StatisticData?) //single card
 //    case trainingMenu(TrainingTableModel)
-    case pool(PoolInfo?) // horizontal scroll
-    case tip // like banner
+    case pool(PoolInfo) // horizontal scroll
+    case tip(ArticleModel) // like banner
 }
 
 extension ViewController {
