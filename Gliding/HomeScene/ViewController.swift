@@ -88,7 +88,10 @@ class ViewController: UIViewController {
                 cell.configure(title: data.title )
             }
         }
-
+        let headerRegistration = UICollectionView.SupplementaryRegistration<HomeHeader>(elementKind: HomeHeader.elementKind,
+                                                                                        handler: { supplementaryView,elementKind,indexPath in
+            supplementaryView.configure(text: "HEADER")
+        })
         
         dataSource = DataSource(collectionView: collectionView, cellProvider: { collectionView, indexPath, itemIdentifier in
             switch indexPath.section {

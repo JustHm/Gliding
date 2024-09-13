@@ -63,6 +63,12 @@ extension ViewController {
         let section = NSCollectionLayoutSection(group: group)
         section.interGroupSpacing = 16
         section.orthogonalScrollingBehavior = .none
+        section.boundarySupplementaryItems = [
+            NSCollectionLayoutBoundarySupplementaryItem(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .absolute(50)),
+                                                        elementKind: HomeHeader.elementKind,
+                                                        alignment: .topLeading)
+        ]
+//        section.supplementariesFollowContentInsets = false
         return section
     }
     
@@ -76,6 +82,11 @@ extension ViewController {
         let section = NSCollectionLayoutSection(group: group)
         section.interGroupSpacing = 10
         section.orthogonalScrollingBehavior = .continuous
+        section.boundarySupplementaryItems = [
+            NSCollectionLayoutBoundarySupplementaryItem(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .absolute(50)),
+                                                        elementKind: HomeHeader.elementKind,
+                                                        alignment: .topLeading)
+        ]
         return section
     }
 }

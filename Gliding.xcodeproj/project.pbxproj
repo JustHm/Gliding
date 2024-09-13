@@ -36,6 +36,7 @@
 		228C6B302BA31B2B0085DE54 /* PoolInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228C6B2F2BA31B2B0085DE54 /* PoolInfoCell.swift */; };
 		228C6B322BA31B540085DE54 /* MainProfileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228C6B312BA31B540085DE54 /* MainProfileCell.swift */; };
 		228C6B362BA31BC50085DE54 /* StatisticViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228C6B352BA31BC50085DE54 /* StatisticViewController.swift */; };
+		22957E742C94359C00E65725 /* HomeHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22957E732C94359C00E65725 /* HomeHeader.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -89,6 +90,7 @@
 		228C6B2F2BA31B2B0085DE54 /* PoolInfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PoolInfoCell.swift; sourceTree = "<group>"; };
 		228C6B312BA31B540085DE54 /* MainProfileCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainProfileCell.swift; sourceTree = "<group>"; };
 		228C6B352BA31BC50085DE54 /* StatisticViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticViewController.swift; sourceTree = "<group>"; };
+		22957E732C94359C00E65725 /* HomeHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeHeader.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -189,7 +191,7 @@
 			isa = PBXGroup;
 			children = (
 				22408BA02C48F52A003ABF30 /* ViewModel.swift */,
-				228C6B2C2BA31AD60085DE54 /* Cells */,
+				228C6B2C2BA31AD60085DE54 /* HomeCells */,
 				2232D3572B95569D00804F81 /* ViewController.swift */,
 				22408B9E2C48F32D003ABF30 /* HomeViewModel.swift */,
 				228C6B272BA30CC40085DE54 /* ViewController+CollectionViewLayout.swift */,
@@ -198,14 +200,15 @@
 			path = HomeScene;
 			sourceTree = "<group>";
 		};
-		228C6B2C2BA31AD60085DE54 /* Cells */ = {
+		228C6B2C2BA31AD60085DE54 /* HomeCells */ = {
 			isa = PBXGroup;
 			children = (
 				228C6B2D2BA31B010085DE54 /* SwimTipCell.swift */,
 				228C6B2F2BA31B2B0085DE54 /* PoolInfoCell.swift */,
 				228C6B312BA31B540085DE54 /* MainProfileCell.swift */,
+				22957E732C94359C00E65725 /* HomeHeader.swift */,
 			);
-			path = Cells;
+			path = HomeCells;
 			sourceTree = "<group>";
 		};
 		228C6B332BA31B710085DE54 /* Model */ = {
@@ -354,6 +357,7 @@
 				2232D3BF2B96AD0F00804F81 /* TrainingTableModel.swift in Sources */,
 				222CC0772C5A2CE10069C1B5 /* ArticleModel.swift in Sources */,
 				228C6B282BA30CC40085DE54 /* ViewController+CollectionViewLayout.swift in Sources */,
+				22957E742C94359C00E65725 /* HomeHeader.swift in Sources */,
 				2232D3C12B96B87B00804F81 /* HealthData.swift in Sources */,
 				2257541A2C7DA29B001DE328 /* LocationManager.swift in Sources */,
 				2232D35E2B95569D00804F81 /* Gliding.xcdatamodeld in Sources */,
