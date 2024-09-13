@@ -27,20 +27,20 @@ final class HealthData {
     ]
     
     func requestAuthorization(completion: @escaping (Bool,(Error)?) -> Void) {
-        guard HKHealthStore.isHealthDataAvailable() else { throw HealthKitError.notExist}
+        //        guard HKHealthStore.isHealthDataAvailable() else { throw HealthKitError.notExist}
         let read = Set(quantityIdentifier)
         store.requestAuthorization(toShare: [], read: read, completion: completion)
-//        
-//        switch status {
-//        case .unnecessary:
-//            break
-//        case .shouldRequest:
-//            store.requestAuthorization(toShare: [], read: read) { _, _ in }
-//        case .unknown:
-//            throw HealthKitError.unknown
-//        @unknown default:
-//            throw HealthKitError.unknown
-//        }
+        
+        //        switch status {
+        //        case .unnecessary:
+        //            break
+        //        case .shouldRequest:
+        //            store.requestAuthorization(toShare: [], read: read) { _, _ in }
+        //        case .unknown:
+        //            throw HealthKitError.unknown
+        //        @unknown default:
+        //            throw HealthKitError.unknown
+        //    }
     }
     
     func getSwimmingData() async throws {

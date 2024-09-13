@@ -9,6 +9,7 @@ import Foundation
 import RxSwift
 import RxRelay
 import RxCocoa
+import UIKit
 
 final class HomeViewModel: ViewModel {
     struct Input { //event stream
@@ -27,35 +28,21 @@ final class HomeViewModel: ViewModel {
     private let poolListRelay: BehaviorRelay<[PoolInfo]>
     private let tipListRelay: BehaviorRelay<[ArticleModel]>
     
-    private let urlSession: URLSession
-    private let healthData: HealthData
-    private let locationManager: LocationManager
+//    private let urlSession: URLSession
+//    private let healthData: HealthData
+//    private let locationManager: LocationManager
     // Core Data Instance
     
     
     
     init(
-        healthData: HealthData = HealthData.instance,
-        urlSession: URLSession = URLSession.shared,
-        locationManager: LocationManager = LocationManager()
     ) {
-        self.healthData = healthData
-        self.urlSession = urlSession
-        self.locationManager = locationManager
-        
-        healthData.requestAuthorization { isChecked, error in
-            if !isChecked { print(error?.localizedDescription as Any)}
-            // 통계를 사용하려면 권한이 꼭 필요하다는 알림? 띄우기
-        }
-        if !locationManager.checkAuthorizationStatus() {
-            // 위치정보 alert 띄우기
-        }
         //Location, HealthData Load
         //PoolList, Tip
         
         todayRelay = BehaviorRelay(value: nil)
-        poolListRelay = BehaviorRelay(value: [])
-        tipListRelay = BehaviorRelay(value: [])
+        poolListRelay = BehaviorRelay(value: [PoolInfo(id: "1", name: "1", address: "1", website: "1", phone: "1")])
+        tipListRelay = BehaviorRelay(value: [ArticleModel(title: "1", body: "1")])
     }
     
     
@@ -77,8 +64,20 @@ final class HomeViewModel: ViewModel {
     }
     
     private func refreshData() {
-        todayRelay.accept(<#T##event: StatisticData?##StatisticData?#>)
-        poolListRelay.accept(<#T##event: [PoolInfo]##[PoolInfo]#>)
-        tipListRelay.accept(<#T##event: [ArticleModel]##[ArticleModel]#>)
+        let today: StatisticData? = StatisticData(workoutDone: true, date: Date())
+        let poolList: [PoolInfo] = [
+            PoolInfo(id: "1", name: "1", address: "1", website: "1", phone: "1"),
+            PoolInfo(id: "2", name: "1", address: "1", website: "1", phone: "1"),
+            PoolInfo(id: "3", name: "1", address: "1", website: "1", phone: "1")
+        ]
+        let tips: [ArticleModel] = [
+                ArticleModel(title: "1", body: "1"),
+                ArticleModel(title: "2", body: "1"),
+                ArticleModel(title: "3", body: "1")
+        ]
+        
+        todayRelay.accept(today)
+        poolListRelay.accept(poolList)
+        tipListRelay.accept(tips)
     }
 }

@@ -138,7 +138,6 @@
 				2232D3532B95569D00804F81 /* AppDelegate.swift */,
 				2232D3552B95569D00804F81 /* SceneDelegate.swift */,
 				2232D35C2B95569D00804F81 /* Gliding.xcdatamodeld */,
-				2232D3642B95569F00804F81 /* Info.plist */,
 				2232D35F2B95569F00804F81 /* Assets.xcassets */,
 				2232D3612B95569F00804F81 /* LaunchScreen.storyboard */,
 			);
@@ -167,6 +166,7 @@
 			isa = PBXGroup;
 			children = (
 				2232D3C22B96BB2700804F81 /* Gliding.entitlements */,
+				2232D3642B95569F00804F81 /* Info.plist */,
 				222CC07C2C5D0AE40069C1B5 /* App */,
 				228C6B342BA31B9E0085DE54 /* StatisticScene */,
 				228C6B332BA31B710085DE54 /* Model */,
@@ -528,7 +528,6 @@
 				INFOPLIST_FILE = Gliding/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -560,7 +559,6 @@
 				INFOPLIST_FILE = Gliding/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (

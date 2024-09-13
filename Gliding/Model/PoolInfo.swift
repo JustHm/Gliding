@@ -10,7 +10,6 @@ import UIKit
 struct PoolInfo: Hashable {
     var id: String
     var name: String
-    var image: UIImage
     var address: String
     var website: String //URL
     var phone: String

@@ -7,15 +7,14 @@
 
 import UIKit
 // Section
-enum HomeSection: Int, Hashable{
-    case mainStatistic
-//    case shareMenu    //trainning table share list
+enum HomeSection: Hashable, CaseIterable{
+    case today
     case poolInfo
     case tip
     
     var header: String {
         switch self {
-        case .mainStatistic:
+        case .today:
             return "오늘 운동"
         case .poolInfo:
             return "내 근처의 수영장"
@@ -27,7 +26,7 @@ enum HomeSection: Int, Hashable{
 
 // Item
 enum HomeSectionItem: Hashable {
-    case statistic(StatisticData?) //single card
+    case today(StatisticData?) //single card
 //    case trainingMenu(TrainingTableModel)
     case pool(PoolInfo) // horizontal scroll
     case tip(ArticleModel) // like banner
