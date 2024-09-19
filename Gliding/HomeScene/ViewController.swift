@@ -23,7 +23,7 @@ class ViewController: UIViewController {
     lazy var collectionView: UICollectionView = {
         let collection = UICollectionView(frame: .zero, collectionViewLayout: makeCollectionView())
         collection.delegate = self
-//        collection.backgroundColor = .clear
+        //        collection.backgroundColor = .clear
         return collection
     }()
     
@@ -88,9 +88,9 @@ class ViewController: UIViewController {
                 cell.configure(title: data.title )
             }
         }
-        let headerRegistration = UICollectionView.SupplementaryRegistration<HomeHeader>(elementKind: HomeHeader.elementKind,
-                                                                                        handler: { supplementaryView,elementKind,indexPath in
-            supplementaryView.configure(text: "HEADER")
+        let headerRegistration = UICollectionView.SupplementaryRegistration<HomeHeader>(elementKind: HomeHeader.elementKind, handler: { supplementaryView,elementKind,indexPath in
+            let headerText = HomeSection.allCases[indexPath.section].header
+            supplementaryView.configure(text: headerText)
         })
         
         dataSource = DataSource(collectionView: collectionView, cellProvider: { collectionView, indexPath, itemIdentifier in
@@ -105,6 +105,11 @@ class ViewController: UIViewController {
                 collectionView.dequeueConfiguredReusableCell(using: mainCellRegistration, for: indexPath, item: itemIdentifier)
             }
         })
+        dataSource.supplementaryViewProvider = { collectionView, kind, indexPath in
+            guard kind == HomeHeader.elementKind else { return UICollectionReusableView() }
+            return collectionView.dequeueConfiguredReusableSupplementary(using: headerRegistration, for: indexPath)
+        }
+        
         refreshControl.endRefreshing()
         collectionView.refreshControl = refreshControl
         collectionView.dataSource = dataSource
@@ -116,13 +121,13 @@ extension ViewController: UICollectionViewDelegate {
         guard let item = dataSource.itemIdentifier(for: indexPath) else { return }
         switch item {
         case .today(let data): // move to statistics Tab
-            print("today Cell \(data)")
+            print("today Cell \(String(describing: data))")
             break;
         case .pool(let data): // move to PoolDetail View
-            print("pool Cell \(data)")
+            print("pool Cell \(String(describing: data))")
             break;
         case .tip(let data): // move to Tip Article View
-            print("tip Cell \(data.title)")
+            print("tip Cell \(String(describing: title))")
             break;
         }
     }

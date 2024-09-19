@@ -43,6 +43,7 @@ class PoolInfoCell: UICollectionViewCell {
     }
     private func setupLayout() {
         contentView.backgroundColor = .cyan
+        contentView.layer.cornerRadius = 10
         contentView.addSubview(nameField)
         
         nameField.snp.makeConstraints {

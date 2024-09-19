@@ -16,5 +16,6 @@ class SwimTipCell: UICollectionViewCell {
     
     private func setupLayout() {
         contentView.backgroundColor = .cyan
+        contentView.layer.cornerRadius = 10
     }
 }

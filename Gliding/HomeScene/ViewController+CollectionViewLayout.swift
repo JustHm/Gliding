@@ -27,7 +27,7 @@ enum HomeSection: Hashable, CaseIterable{
 // Item
 enum HomeSectionItem: Hashable {
     case today(StatisticData?) //single card
-//    case trainingMenu(TrainingTableModel)
+    //    case trainingMenu(TrainingTableModel)
     case pool(PoolInfo) // horizontal scroll
     case tip(ArticleModel) // like banner
 }
@@ -47,7 +47,7 @@ extension ViewController {
         case 1: // pool
             return createHorizontalScrollingSection()
         case 2: // swim tip
-            return createHorizontalScrollingSection()
+            return createListHorizontalScrollingSection()
         default:
             return createMainSection() // 임시
         }
@@ -57,18 +57,18 @@ extension ViewController {
         let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1))
         let item = NSCollectionLayoutItem(layoutSize: itemSize)
         
-        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .estimated(300))
+        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .estimated(200))
         let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
         
         let section = NSCollectionLayoutSection(group: group)
         section.interGroupSpacing = 16
+        section.contentInsets = .init(top: 0, leading: 16, bottom: 16, trailing: 16)
         section.orthogonalScrollingBehavior = .none
         section.boundarySupplementaryItems = [
             NSCollectionLayoutBoundarySupplementaryItem(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .absolute(50)),
                                                         elementKind: HomeHeader.elementKind,
                                                         alignment: .topLeading)
         ]
-//        section.supplementariesFollowContentInsets = false
         return section
     }
     
@@ -76,12 +76,32 @@ extension ViewController {
         let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1))
         let item = NSCollectionLayoutItem(layoutSize: itemSize)
         
-        let groupSize = NSCollectionLayoutSize(widthDimension: .estimated(200), heightDimension: .estimated(300)) //heightDimension: .fractionalHeight(0.3)
+        let groupSize = NSCollectionLayoutSize(widthDimension: .estimated(200), heightDimension: .estimated(200)) //heightDimension: .fractionalHeight(0.3)
         let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
         
         let section = NSCollectionLayoutSection(group: group)
         section.interGroupSpacing = 10
+        section.contentInsets = .init(top: 0, leading: 16, bottom: 16, trailing: 16)
         section.orthogonalScrollingBehavior = .continuous
+        section.boundarySupplementaryItems = [
+            NSCollectionLayoutBoundarySupplementaryItem(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .absolute(50)),
+                                                        elementKind: HomeHeader.elementKind,
+                                                        alignment: .topLeading)
+        ]
+        return section
+    }
+    
+    private func createListHorizontalScrollingSection() -> NSCollectionLayoutSection {
+        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1))
+        let item = NSCollectionLayoutItem(layoutSize: itemSize)
+        
+        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .estimated(50))
+        let group = NSCollectionLayoutGroup.vertical(layoutSize: groupSize, repeatingSubitem: item, count: 5)
+        
+        let section = NSCollectionLayoutSection(group: group)
+        section.interGroupSpacing = 10
+        section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 16, bottom: 16, trailing: 16)
+        section.orthogonalScrollingBehavior = .groupPagingCentered
         section.boundarySupplementaryItems = [
             NSCollectionLayoutBoundarySupplementaryItem(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .absolute(50)),
                                                         elementKind: HomeHeader.elementKind,

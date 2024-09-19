@@ -9,14 +9,17 @@ import UIKit
 
 final class HomeHeader: UICollectionReusableView {
     static let elementKind = "section-header-element-kind"
+    static let identifier = "home-header"
     lazy var header: UITextField = {
         let textField = UITextField()
-        textField.font = .preferredFont(forTextStyle: .headline)
+        textField.textColor = .label
+        textField.font = .preferredFont(forTextStyle: .extraLargeTitle2)
         return textField
     }()
     
     func configure(text: String) {
         header.text = text
+        setupLayout()
     }
     
     private func setupLayout() {
