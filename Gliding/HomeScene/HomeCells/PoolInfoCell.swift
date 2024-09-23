@@ -11,6 +11,7 @@ import SnapKit
 
 class PoolInfoCell: UICollectionViewCell {
     static let identifier = String(describing: PoolInfoCell.self)
+    private let cornerRadius: CGFloat = 14
     var address: String?
     var name: String?
     var phone: String?
@@ -23,15 +24,6 @@ class PoolInfoCell: UICollectionViewCell {
         return field
     }()
     
-    
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-//        setupLayout()
-    }
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
     public func configure(poolInfo: PoolInfo?) {
         if let poolInfo {
             self.address = poolInfo.address
@@ -42,8 +34,7 @@ class PoolInfoCell: UICollectionViewCell {
         setupLayout()
     }
     private func setupLayout() {
-        contentView.backgroundColor = .cyan
-        contentView.layer.cornerRadius = 10
+        configureProperty()
         contentView.addSubview(nameField)
         
         nameField.snp.makeConstraints {
@@ -51,4 +42,21 @@ class PoolInfoCell: UICollectionViewCell {
             $0.top.equalToSuperview().offset(8.0)
         }
     }
+    
+    private func configureProperty() {
+        //corner
+        contentView.layer.cornerRadius = cornerRadius
+        contentView.clipsToBounds = true
+        contentView.backgroundColor = .white
+        //shadow
+        layer.shadowRadius = 2
+        layer.shadowOffset = CGSize(width: 0, height: 2)
+        layer.shadowOpacity = 0.25
+        layer.shadowColor = UIColor.black.cgColor
+        layer.cornerRadius = cornerRadius
+        layer.masksToBounds = false
+        layer.shadowPath = UIBezierPath(roundedRect: bounds, cornerRadius: cornerRadius).cgPath
+        
+    }
+
 }

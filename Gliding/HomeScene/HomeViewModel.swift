@@ -72,8 +72,12 @@ final class HomeViewModel: ViewModel {
         ]
         let tips: [ArticleModel] = [
                 ArticleModel(title: "1", body: "1"),
-                ArticleModel(title: "2", body: "1"),
-                ArticleModel(title: "3", body: "1")
+                ArticleModel(title: "2", body: "ㅁ"),
+                ArticleModel(title: "1", body: "ㄴ"),
+                ArticleModel(title: "2", body: "ㅇ"),
+                ArticleModel(title: "1", body: "ㄹ"),
+                ArticleModel(title: "2", body: "ㅎ"),
+                ArticleModel(title: "3", body: "ㅗ")
         ]
         
         todayRelay.accept(today)

@@ -23,7 +23,7 @@ class ViewController: UIViewController {
     lazy var collectionView: UICollectionView = {
         let collection = UICollectionView(frame: .zero, collectionViewLayout: makeCollectionView())
         collection.delegate = self
-        //        collection.backgroundColor = .clear
+//        collection.backgroundColor = .gray
         return collection
     }()
     
@@ -57,6 +57,8 @@ class ViewController: UIViewController {
     }
     
     private func setupLayout() {
+        navigationController?.navigationBar.backgroundColor = .green
+//        navigationController?.navigationBar.inputView
         view.addSubview(collectionView)
         collectionView.snp.makeConstraints{
             $0.edges.equalToSuperview()

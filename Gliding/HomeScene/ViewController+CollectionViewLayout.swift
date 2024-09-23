@@ -61,7 +61,6 @@ extension ViewController {
         let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
         
         let section = NSCollectionLayoutSection(group: group)
-        section.interGroupSpacing = 16
         section.contentInsets = .init(top: 0, leading: 16, bottom: 16, trailing: 16)
         section.orthogonalScrollingBehavior = .none
         section.boundarySupplementaryItems = [
@@ -95,8 +94,9 @@ extension ViewController {
         let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1))
         let item = NSCollectionLayoutItem(layoutSize: itemSize)
         
-        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .estimated(50))
+        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.8/2), heightDimension: .estimated(50))
         let group = NSCollectionLayoutGroup.vertical(layoutSize: groupSize, repeatingSubitem: item, count: 5)
+        group.interItemSpacing = .fixed(1)
         
         let section = NSCollectionLayoutSection(group: group)
         section.interGroupSpacing = 10
