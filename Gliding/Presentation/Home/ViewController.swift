@@ -23,7 +23,6 @@ class ViewController: UIViewController {
     lazy var collectionView: UICollectionView = {
         let collection = UICollectionView(frame: .zero, collectionViewLayout: makeCollectionView())
         collection.delegate = self
-//        collection.backgroundColor = .gray
         return collection
     }()
     
@@ -32,7 +31,6 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         viewModel = HomeViewModel()
-        
         setupLayout()
         configureCollectionView()
         bindViewModel()
@@ -57,8 +55,6 @@ class ViewController: UIViewController {
     }
     
     private func setupLayout() {
-        navigationController?.navigationBar.backgroundColor = .green
-//        navigationController?.navigationBar.inputView
         view.addSubview(collectionView)
         collectionView.snp.makeConstraints{
             $0.edges.equalToSuperview()
@@ -129,7 +125,7 @@ extension ViewController: UICollectionViewDelegate {
             print("pool Cell \(String(describing: data))")
             break;
         case .tip(let data): // move to Tip Article View
-            print("tip Cell \(String(describing: title))")
+            print("tip Cell \(String(describing: data))")
             break;
         }
     }

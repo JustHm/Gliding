@@ -27,7 +27,6 @@ enum HomeSection: Hashable, CaseIterable{
 // Item
 enum HomeSectionItem: Hashable {
     case today(StatisticData?) //single card
-    //    case trainingMenu(TrainingTableModel)
     case pool(PoolInfo) // horizontal scroll
     case tip(ArticleModel) // like banner
 }
@@ -64,7 +63,7 @@ extension ViewController {
         section.contentInsets = .init(top: 0, leading: 16, bottom: 16, trailing: 16)
         section.orthogonalScrollingBehavior = .none
         section.boundarySupplementaryItems = [
-            NSCollectionLayoutBoundarySupplementaryItem(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .absolute(50)),
+            NSCollectionLayoutBoundarySupplementaryItem(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .estimated(50)),
                                                         elementKind: HomeHeader.elementKind,
                                                         alignment: .topLeading)
         ]
@@ -83,7 +82,7 @@ extension ViewController {
         section.contentInsets = .init(top: 0, leading: 16, bottom: 16, trailing: 16)
         section.orthogonalScrollingBehavior = .continuous
         section.boundarySupplementaryItems = [
-            NSCollectionLayoutBoundarySupplementaryItem(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .absolute(50)),
+            NSCollectionLayoutBoundarySupplementaryItem(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .estimated(50)),
                                                         elementKind: HomeHeader.elementKind,
                                                         alignment: .topLeading)
         ]
@@ -103,7 +102,7 @@ extension ViewController {
         section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 16, bottom: 16, trailing: 16)
         section.orthogonalScrollingBehavior = .groupPagingCentered
         section.boundarySupplementaryItems = [
-            NSCollectionLayoutBoundarySupplementaryItem(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .absolute(50)),
+            NSCollectionLayoutBoundarySupplementaryItem(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .estimated(50)),
                                                         elementKind: HomeHeader.elementKind,
                                                         alignment: .topLeading)
         ]

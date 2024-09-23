@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 56;
+	objectVersion = 70;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -32,11 +32,8 @@
 		227C0F9B2C43B5E9006D42FB /* PoolInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227C0F9A2C43B5E9006D42FB /* PoolInfo.swift */; };
 		228C6B282BA30CC40085DE54 /* ViewController+CollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228C6B272BA30CC40085DE54 /* ViewController+CollectionViewLayout.swift */; };
 		228C6B2B2BA3159D0085DE54 /* StatisticData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228C6B2A2BA3159D0085DE54 /* StatisticData.swift */; };
-		228C6B2E2BA31B010085DE54 /* SwimTipCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228C6B2D2BA31B010085DE54 /* SwimTipCell.swift */; };
-		228C6B302BA31B2B0085DE54 /* PoolInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228C6B2F2BA31B2B0085DE54 /* PoolInfoCell.swift */; };
-		228C6B322BA31B540085DE54 /* MainProfileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228C6B312BA31B540085DE54 /* MainProfileCell.swift */; };
 		228C6B362BA31BC50085DE54 /* StatisticViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228C6B352BA31BC50085DE54 /* StatisticViewController.swift */; };
-		22957E742C94359C00E65725 /* HomeHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22957E732C94359C00E65725 /* HomeHeader.swift */; };
+		22EBBB442CA17E4E008A0348 /* TrainingListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22EBBB432CA17E4E008A0348 /* TrainingListViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -86,12 +83,13 @@
 		227C0F9A2C43B5E9006D42FB /* PoolInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PoolInfo.swift; sourceTree = "<group>"; };
 		228C6B272BA30CC40085DE54 /* ViewController+CollectionViewLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController+CollectionViewLayout.swift"; sourceTree = "<group>"; };
 		228C6B2A2BA3159D0085DE54 /* StatisticData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticData.swift; sourceTree = "<group>"; };
-		228C6B2D2BA31B010085DE54 /* SwimTipCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwimTipCell.swift; sourceTree = "<group>"; };
-		228C6B2F2BA31B2B0085DE54 /* PoolInfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PoolInfoCell.swift; sourceTree = "<group>"; };
-		228C6B312BA31B540085DE54 /* MainProfileCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainProfileCell.swift; sourceTree = "<group>"; };
 		228C6B352BA31BC50085DE54 /* StatisticViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticViewController.swift; sourceTree = "<group>"; };
-		22957E732C94359C00E65725 /* HomeHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeHeader.swift; sourceTree = "<group>"; };
+		22EBBB432CA17E4E008A0348 /* TrainingListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainingListViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		22EBBB3E2CA17D87008A0348 /* HomeCells */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = HomeCells; sourceTree = "<group>"; };
+/* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		2232D34D2B95569D00804F81 /* Frameworks */ = {
@@ -172,7 +170,7 @@
 				222CC07C2C5D0AE40069C1B5 /* App */,
 				228C6B342BA31B9E0085DE54 /* StatisticScene */,
 				228C6B332BA31B710085DE54 /* Model */,
-				228C6B292BA3155C0085DE54 /* HomeScene */,
+				228C6B292BA3155C0085DE54 /* Presentation */,
 				222CC07B2C5D0AD00069C1B5 /* Service */,
 				222CC07A2C5D0AC20069C1B5 /* Repository */,
 			);
@@ -187,28 +185,15 @@
 			path = GlidingTests;
 			sourceTree = "<group>";
 		};
-		228C6B292BA3155C0085DE54 /* HomeScene */ = {
+		228C6B292BA3155C0085DE54 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
 				22408BA02C48F52A003ABF30 /* ViewModel.swift */,
-				228C6B2C2BA31AD60085DE54 /* HomeCells */,
-				2232D3572B95569D00804F81 /* ViewController.swift */,
-				22408B9E2C48F32D003ABF30 /* HomeViewModel.swift */,
-				228C6B272BA30CC40085DE54 /* ViewController+CollectionViewLayout.swift */,
 				222CC07D2C5D19EA0069C1B5 /* MainTabBarController.swift */,
+				22EBBB392CA17D7E008A0348 /* Home */,
+				22EBBB452CA17FF3008A0348 /* TrainingList */,
 			);
-			path = HomeScene;
-			sourceTree = "<group>";
-		};
-		228C6B2C2BA31AD60085DE54 /* HomeCells */ = {
-			isa = PBXGroup;
-			children = (
-				228C6B2D2BA31B010085DE54 /* SwimTipCell.swift */,
-				228C6B2F2BA31B2B0085DE54 /* PoolInfoCell.swift */,
-				228C6B312BA31B540085DE54 /* MainProfileCell.swift */,
-				22957E732C94359C00E65725 /* HomeHeader.swift */,
-			);
-			path = HomeCells;
+			path = Presentation;
 			sourceTree = "<group>";
 		};
 		228C6B332BA31B710085DE54 /* Model */ = {
@@ -231,6 +216,25 @@
 			path = StatisticScene;
 			sourceTree = "<group>";
 		};
+		22EBBB392CA17D7E008A0348 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				22EBBB3E2CA17D87008A0348 /* HomeCells */,
+				22408B9E2C48F32D003ABF30 /* HomeViewModel.swift */,
+				2232D3572B95569D00804F81 /* ViewController.swift */,
+				228C6B272BA30CC40085DE54 /* ViewController+CollectionViewLayout.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		22EBBB452CA17FF3008A0348 /* TrainingList */ = {
+			isa = PBXGroup;
+			children = (
+				22EBBB432CA17E4E008A0348 /* TrainingListViewController.swift */,
+			);
+			path = TrainingList;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -246,6 +250,9 @@
 			buildRules = (
 			);
 			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				22EBBB3E2CA17D87008A0348 /* HomeCells */,
 			);
 			name = Gliding;
 			packageProductDependencies = (
@@ -347,26 +354,23 @@
 			buildActionMask = 2147483647;
 			files = (
 				228C6B2B2BA3159D0085DE54 /* StatisticData.swift in Sources */,
-				228C6B322BA31B540085DE54 /* MainProfileCell.swift in Sources */,
 				2232D3582B95569D00804F81 /* ViewController.swift in Sources */,
 				228C6B362BA31BC50085DE54 /* StatisticViewController.swift in Sources */,
 				2232D3542B95569D00804F81 /* AppDelegate.swift in Sources */,
 				22408BA12C48F52A003ABF30 /* ViewModel.swift in Sources */,
-				228C6B302BA31B2B0085DE54 /* PoolInfoCell.swift in Sources */,
 				227C0F9B2C43B5E9006D42FB /* PoolInfo.swift in Sources */,
 				2232D3BF2B96AD0F00804F81 /* TrainingTableModel.swift in Sources */,
 				222CC0772C5A2CE10069C1B5 /* ArticleModel.swift in Sources */,
 				228C6B282BA30CC40085DE54 /* ViewController+CollectionViewLayout.swift in Sources */,
-				22957E742C94359C00E65725 /* HomeHeader.swift in Sources */,
 				2232D3C12B96B87B00804F81 /* HealthData.swift in Sources */,
 				2257541A2C7DA29B001DE328 /* LocationManager.swift in Sources */,
 				2232D35E2B95569D00804F81 /* Gliding.xcdatamodeld in Sources */,
 				222CC07E2C5D19EA0069C1B5 /* MainTabBarController.swift in Sources */,
 				2232D3562B95569D00804F81 /* SceneDelegate.swift in Sources */,
 				22408B9F2C48F32D003ABF30 /* HomeViewModel.swift in Sources */,
+				22EBBB442CA17E4E008A0348 /* TrainingListViewController.swift in Sources */,
 				222CC0752C58CE940069C1B5 /* ShareModel.swift in Sources */,
 				222CC0792C5A31900069C1B5 /* TrainingDatabase.swift in Sources */,
-				228C6B2E2BA31B010085DE54 /* SwimTipCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

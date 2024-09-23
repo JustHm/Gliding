@@ -23,7 +23,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window?.makeKeyAndVisible()
         
         //use tabbar controller
-        // tab: home, statistics, menu(Trainning), 
+        // tab: home, statistics, menu(Trainning), board(share workout plan)
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
