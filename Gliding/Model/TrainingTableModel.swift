@@ -7,28 +7,31 @@
 
 import Foundation
 
-struct TrainingTableModel {
+struct TrainingTableModel: Hashable {
+    var id: UUID
     var title: String
-    var description: String
-    var category: [TrainCategory] // 중복 선택 가능
+    var detail: String
     // Training Assets
-    var warmUpSet: [TrainingAsset]
-    var mainSet: [TrainingAsset]
-    var coolDownSet: [TrainingAsset]
+    var warmUpSet: [TrainingSetModel]
+    var mainSet: [TrainingSetModel]
+    var coolDownSet: [TrainingSetModel]
+    
+    init(id: UUID = UUID(), title: String, detail: String, warmUpSet: [TrainingSetModel], mainSet: [TrainingSetModel], coolDownSet: [TrainingSetModel]) {
+        self.id = id
+        self.title = title
+        self.detail = detail
+        self.warmUpSet = warmUpSet
+        self.mainSet = mainSet
+        self.coolDownSet = coolDownSet
+    }
+    
 }
 
-struct TrainingAsset {
+struct TrainingSetModel: Hashable {
+    var id: UUID
     var name: String
+    var detial: String
     var lane: Int //lane distance 25,50,100...
     var rep: Int // loop
     var timeLimit: Int?
-    var effort: Int? // low middle high
-}
-
-enum TrainCategory: Int {
-    case freestyle = 10 // 자유형
-    case backstroke = 20 // 배영
-    case breaststroke = 30 // 평영
-    case butterfly = 40 //접영
-    case any = 90
 }

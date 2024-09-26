@@ -31,14 +31,9 @@ final class HomeViewModel: ViewModel {
 //    private let urlSession: URLSession
 //    private let healthData: HealthData
 //    private let locationManager: LocationManager
-    // Core Data Instance
     
-    
-    
-    init(
-    ) {
-        //Location, HealthData Load
-        //PoolList, Tip
+    init() {
+        //network, Location, HealthData Load
         
         todayRelay = BehaviorRelay(value: nil)
         poolListRelay = BehaviorRelay(value: [PoolInfo(id: "1", name: "1", address: "1", website: "1", phone: "1")])
