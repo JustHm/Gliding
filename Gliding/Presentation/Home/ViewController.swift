@@ -32,7 +32,7 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view.
         viewModel = HomeViewModel()
         setupLayout()
-        configureCollectionView()
+        setupCollectionView()
         bindViewModel()
     }
     
@@ -70,7 +70,7 @@ class ViewController: UIViewController {
         
     }
     
-    private func configureCollectionView() {
+    private func setupCollectionView() {
         let mainCellRegistration = UICollectionView.CellRegistration<MainProfileCell,HomeSectionItem> {cell,indexPath,itemIdentifier in
             if case let HomeSectionItem.today(data) = itemIdentifier {
                 cell.configure(data: data)

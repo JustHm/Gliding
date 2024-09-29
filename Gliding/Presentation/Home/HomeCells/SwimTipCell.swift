@@ -12,8 +12,7 @@ class SwimTipCell: UICollectionViewCell {
     private let cornerRadius: CGFloat = 0
     lazy var seperatorView: UIView = {
         let seperatorView = UIView()
-        seperatorView.translatesAutoresizingMaskIntoConstraints = false
-        seperatorView.backgroundColor = .lightGray
+        seperatorView.backgroundColor = .separator
         return seperatorView
     }()
     

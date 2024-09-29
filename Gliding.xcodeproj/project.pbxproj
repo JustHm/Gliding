@@ -40,6 +40,7 @@
 		22FA380E2CA54FC8006B6951 /* TrainingTableHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FA380D2CA54FC8006B6951 /* TrainingTableHeader.swift */; };
 		22FA38102CA54FD7006B6951 /* TrainingSetCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FA380F2CA54FD7006B6951 /* TrainingSetCell.swift */; };
 		22FA38122CA54FE0006B6951 /* TrainingSetHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FA38112CA54FE0006B6951 /* TrainingSetHeader.swift */; };
+		22FA38152CA6ECD7006B6951 /* TrainingDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FA38142CA6ECD7006B6951 /* TrainingDetailViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -97,6 +98,7 @@
 		22FA380D2CA54FC8006B6951 /* TrainingTableHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainingTableHeader.swift; sourceTree = "<group>"; };
 		22FA380F2CA54FD7006B6951 /* TrainingSetCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainingSetCell.swift; sourceTree = "<group>"; };
 		22FA38112CA54FE0006B6951 /* TrainingSetHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainingSetHeader.swift; sourceTree = "<group>"; };
+		22FA38142CA6ECD7006B6951 /* TrainingDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainingDetailViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -178,6 +180,7 @@
 			children = (
 				2232D3C22B96BB2700804F81 /* Gliding.entitlements */,
 				2232D3642B95569F00804F81 /* Info.plist */,
+				22FA38162CA989B3006B6951 /* Utility */,
 				222CC07C2C5D0AE40069C1B5 /* App */,
 				228C6B342BA31B9E0085DE54 /* StatisticScene */,
 				22FA38062CA3FF9D006B6951 /* Entity */,
@@ -201,7 +204,6 @@
 			isa = PBXGroup;
 			children = (
 				222CC07D2C5D19EA0069C1B5 /* MainTabBarController.swift */,
-				22FA38092CA54264006B6951 /* CompositionalLayoutHelper.swift */,
 				22408BA02C48F52A003ABF30 /* ViewModel.swift */,
 				22EBBB392CA17D7E008A0348 /* Home */,
 				22EBBB452CA17FF3008A0348 /* Training */,
@@ -243,10 +245,11 @@
 		22EBBB452CA17FF3008A0348 /* Training */ = {
 			isa = PBXGroup;
 			children = (
+				22FA38132CA54FF8006B6951 /* Cells */,
 				22EBBB432CA17E4E008A0348 /* TrainingListViewController.swift */,
 				22FA380B2CA54936006B6951 /* TrainingDetailViewController.swift */,
+				22FA38142CA6ECD7006B6951 /* TrainingDetailViewModel.swift */,
 				22FA38042CA3F1BE006B6951 /* TrainingListViewModel.swift */,
-				22FA38132CA54FF8006B6951 /* Cells */,
 			);
 			path = Training;
 			sourceTree = "<group>";
@@ -267,6 +270,14 @@
 				22FA38112CA54FE0006B6951 /* TrainingSetHeader.swift */,
 			);
 			path = Cells;
+			sourceTree = "<group>";
+		};
+		22FA38162CA989B3006B6951 /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+				22FA38092CA54264006B6951 /* CompositionalLayoutHelper.swift */,
+			);
+			path = Utility;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -394,6 +405,7 @@
 				2232D3582B95569D00804F81 /* ViewController.swift in Sources */,
 				228C6B362BA31BC50085DE54 /* StatisticViewController.swift in Sources */,
 				2232D3542B95569D00804F81 /* AppDelegate.swift in Sources */,
+				22FA38152CA6ECD7006B6951 /* TrainingDetailViewModel.swift in Sources */,
 				22408BA12C48F52A003ABF30 /* ViewModel.swift in Sources */,
 				227C0F9B2C43B5E9006D42FB /* PoolInfo.swift in Sources */,
 				2232D3BF2B96AD0F00804F81 /* TrainingTableModel.swift in Sources */,

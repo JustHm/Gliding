@@ -8,7 +8,7 @@
 import UIKit
 
 final class HomeHeader: UICollectionReusableView {
-    static let elementKind = "section-header-element-kind"
+    static let elementKind = UICollectionView.elementKindSectionHeader
     static let identifier = "home-header"
     lazy var header: UITextField = {
         let textField = UITextField()
