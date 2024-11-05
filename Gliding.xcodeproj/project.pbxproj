@@ -32,12 +32,13 @@
 		228C6B282BA30CC40085DE54 /* ViewController+CollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228C6B272BA30CC40085DE54 /* ViewController+CollectionViewLayout.swift */; };
 		228C6B2B2BA3159D0085DE54 /* StatisticData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228C6B2A2BA3159D0085DE54 /* StatisticData.swift */; };
 		228C6B362BA31BC50085DE54 /* StatisticViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228C6B352BA31BC50085DE54 /* StatisticViewController.swift */; };
+		22CAC0C02CD9E6420045E24A /* ReactorKit in Frameworks */ = {isa = PBXBuildFile; productRef = 22CAC0BF2CD9E6420045E24A /* ReactorKit */; };
 		22EBBB442CA17E4E008A0348 /* TrainingListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22EBBB432CA17E4E008A0348 /* TrainingListViewController.swift */; };
 		22FA38052CA3F1BE006B6951 /* TrainingListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FA38042CA3F1BE006B6951 /* TrainingListViewModel.swift */; };
 		22FA38082CA3FFBA006B6951 /* TriningTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FA38072CA3FFBA006B6951 /* TriningTable.swift */; };
 		22FA380A2CA54264006B6951 /* CompositionalLayoutHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FA38092CA54264006B6951 /* CompositionalLayoutHelper.swift */; };
 		22FA380C2CA54936006B6951 /* TrainingDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FA380B2CA54936006B6951 /* TrainingDetailViewController.swift */; };
-		22FA380E2CA54FC8006B6951 /* TrainingTableHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FA380D2CA54FC8006B6951 /* TrainingTableHeader.swift */; };
+		22FA380E2CA54FC8006B6951 /* TrainingTableHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FA380D2CA54FC8006B6951 /* TrainingTableHeaderCell.swift */; };
 		22FA38102CA54FD7006B6951 /* TrainingSetCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FA380F2CA54FD7006B6951 /* TrainingSetCell.swift */; };
 		22FA38122CA54FE0006B6951 /* TrainingSetHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FA38112CA54FE0006B6951 /* TrainingSetHeader.swift */; };
 		22FA38152CA6ECD7006B6951 /* TrainingDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FA38142CA6ECD7006B6951 /* TrainingDetailViewModel.swift */; };
@@ -95,7 +96,7 @@
 		22FA38072CA3FFBA006B6951 /* TriningTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TriningTable.swift; sourceTree = "<group>"; };
 		22FA38092CA54264006B6951 /* CompositionalLayoutHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompositionalLayoutHelper.swift; sourceTree = "<group>"; };
 		22FA380B2CA54936006B6951 /* TrainingDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainingDetailViewController.swift; sourceTree = "<group>"; };
-		22FA380D2CA54FC8006B6951 /* TrainingTableHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainingTableHeader.swift; sourceTree = "<group>"; };
+		22FA380D2CA54FC8006B6951 /* TrainingTableHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainingTableHeaderCell.swift; sourceTree = "<group>"; };
 		22FA380F2CA54FD7006B6951 /* TrainingSetCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainingSetCell.swift; sourceTree = "<group>"; };
 		22FA38112CA54FE0006B6951 /* TrainingSetHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainingSetHeader.swift; sourceTree = "<group>"; };
 		22FA38142CA6ECD7006B6951 /* TrainingDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainingDetailViewModel.swift; sourceTree = "<group>"; };
@@ -113,6 +114,7 @@
 				227C0F972C439168006D42FB /* RxSwift in Frameworks */,
 				2207E24D2C44F2A7005A4FCA /* SnapKit in Frameworks */,
 				227C0F952C439168006D42FB /* RxRelay in Frameworks */,
+				22CAC0C02CD9E6420045E24A /* ReactorKit in Frameworks */,
 				227C0F932C439168006D42FB /* RxCocoa in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -247,9 +249,9 @@
 			children = (
 				22FA38132CA54FF8006B6951 /* Cells */,
 				22EBBB432CA17E4E008A0348 /* TrainingListViewController.swift */,
+				22FA38042CA3F1BE006B6951 /* TrainingListViewModel.swift */,
 				22FA380B2CA54936006B6951 /* TrainingDetailViewController.swift */,
 				22FA38142CA6ECD7006B6951 /* TrainingDetailViewModel.swift */,
-				22FA38042CA3F1BE006B6951 /* TrainingListViewModel.swift */,
 			);
 			path = Training;
 			sourceTree = "<group>";
@@ -265,7 +267,7 @@
 		22FA38132CA54FF8006B6951 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
-				22FA380D2CA54FC8006B6951 /* TrainingTableHeader.swift */,
+				22FA380D2CA54FC8006B6951 /* TrainingTableHeaderCell.swift */,
 				22FA380F2CA54FD7006B6951 /* TrainingSetCell.swift */,
 				22FA38112CA54FE0006B6951 /* TrainingSetHeader.swift */,
 			);
@@ -305,6 +307,7 @@
 				227C0F942C439168006D42FB /* RxRelay */,
 				227C0F962C439168006D42FB /* RxSwift */,
 				2207E24C2C44F2A7005A4FCA /* SnapKit */,
+				22CAC0BF2CD9E6420045E24A /* ReactorKit */,
 			);
 			productName = Gliding;
 			productReference = 2232D3502B95569D00804F81 /* Gliding.app */;
@@ -363,6 +366,7 @@
 			packageReferences = (
 				227C0F8F2C439168006D42FB /* XCRemoteSwiftPackageReference "RxSwift" */,
 				2207E24B2C44F2A7005A4FCA /* XCRemoteSwiftPackageReference "SnapKit" */,
+				22CAC0BE2CD9E6420045E24A /* XCRemoteSwiftPackageReference "ReactorKit" */,
 			);
 			productRefGroup = 2232D3512B95569D00804F81 /* Products */;
 			projectDirPath = "";
@@ -418,7 +422,7 @@
 				222CC07E2C5D19EA0069C1B5 /* MainTabBarController.swift in Sources */,
 				2232D3562B95569D00804F81 /* SceneDelegate.swift in Sources */,
 				22408B9F2C48F32D003ABF30 /* HomeViewModel.swift in Sources */,
-				22FA380E2CA54FC8006B6951 /* TrainingTableHeader.swift in Sources */,
+				22FA380E2CA54FC8006B6951 /* TrainingTableHeaderCell.swift in Sources */,
 				22EBBB442CA17E4E008A0348 /* TrainingListViewController.swift in Sources */,
 				22FA38082CA3FFBA006B6951 /* TriningTable.swift in Sources */,
 				222CC0752C58CE940069C1B5 /* ShareModel.swift in Sources */,
@@ -724,6 +728,14 @@
 				minimumVersion = 6.7.1;
 			};
 		};
+		22CAC0BE2CD9E6420045E24A /* XCRemoteSwiftPackageReference "ReactorKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ReactorKit/ReactorKit";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.2.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -756,6 +768,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 227C0F8F2C439168006D42FB /* XCRemoteSwiftPackageReference "RxSwift" */;
 			productName = RxTest;
+		};
+		22CAC0BF2CD9E6420045E24A /* ReactorKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 22CAC0BE2CD9E6420045E24A /* XCRemoteSwiftPackageReference "ReactorKit" */;
+			productName = ReactorKit;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

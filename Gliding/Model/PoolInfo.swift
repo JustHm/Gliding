@@ -7,7 +7,7 @@
 
 import UIKit
 
-struct PoolInfo: Hashable {
+struct PoolInfo: Hashable, Codable {
     var id: String
     var name: String
     var address: String

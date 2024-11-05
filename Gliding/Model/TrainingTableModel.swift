@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct TrainingTableModel: Hashable {
+struct TrainingTableModel: Hashable, Codable {
     var id: UUID
     var title: String
     var detail: String
@@ -15,23 +15,25 @@ struct TrainingTableModel: Hashable {
     var warmUpSet: [TrainingSetModel]
     var mainSet: [TrainingSetModel]
     var coolDownSet: [TrainingSetModel]
-    
-    init(id: UUID = UUID(), title: String, detail: String, warmUpSet: [TrainingSetModel], mainSet: [TrainingSetModel], coolDownSet: [TrainingSetModel]) {
-        self.id = id
-        self.title = title
-        self.detail = detail
-        self.warmUpSet = warmUpSet
-        self.mainSet = mainSet
-        self.coolDownSet = coolDownSet
-    }
-    
 }
 
-struct TrainingSetModel: Hashable {
+struct TrainingSetModel: Hashable, Codable{
     var id: UUID
-    var name: String
-    var detial: String
+    var title: String
     var lane: Int //lane distance 25,50,100...
     var rep: Int // loop
     var timeLimit: Int?
+}
+
+
+struct TrainingTableDisplayModel: Hashable {
+    var id: UUID
+    var title: String
+    var detail: String
+}
+
+struct TrainingSetListModel: Hashable {
+    var warmUpSet: [TrainingSetModel]
+    var mainSet: [TrainingSetModel]
+    var coolDownSet: [TrainingSetModel]
 }

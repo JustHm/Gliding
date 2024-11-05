@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct ArticleModel: Hashable {
+struct ArticleModel: Hashable, Codable {
     var title: String
     var body: String
 }

@@ -12,6 +12,7 @@ extension NSCollectionLayoutSection {
         itemSize: NSCollectionLayoutSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1)),
         groupSize: NSCollectionLayoutSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.8/2), heightDimension: .estimated(50)),
         sectionInset: NSDirectionalEdgeInsets = NSDirectionalEdgeInsets(top: 0, leading: 16, bottom: 16, trailing: 16),
+        headerElementKind: String?,
         repeatCount: Int = 5
     ) -> NSCollectionLayoutSection {
         
@@ -23,18 +24,21 @@ extension NSCollectionLayoutSection {
         section.interGroupSpacing = 10
         section.contentInsets = sectionInset
         section.orthogonalScrollingBehavior = .groupPagingCentered
-        section.boundarySupplementaryItems = [
-            NSCollectionLayoutBoundarySupplementaryItem(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .estimated(50)),
-                                                        elementKind: HomeHeader.elementKind,
-                                                        alignment: .topLeading)
-        ]
+        if let headerElementKind {
+            section.boundarySupplementaryItems = [
+                NSCollectionLayoutBoundarySupplementaryItem(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .estimated(50)),
+                                                            elementKind: headerElementKind,
+                                                            alignment: .topLeading)
+            ]
+        }
         return section
     }
     
     static func CardViewHorizontalScrollingSection(
         itemSize: NSCollectionLayoutSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1)),
         groupSize: NSCollectionLayoutSize =  NSCollectionLayoutSize(widthDimension: .estimated(200), heightDimension: .estimated(200)),
-        sectionInset: NSDirectionalEdgeInsets = NSDirectionalEdgeInsets(top: 0, leading: 16, bottom: 16, trailing: 16)
+        sectionInset: NSDirectionalEdgeInsets = NSDirectionalEdgeInsets(top: 0, leading: 16, bottom: 16, trailing: 16),
+        headerElementKind: String?
     ) -> NSCollectionLayoutSection {
         
         let item = NSCollectionLayoutItem(layoutSize: itemSize)
@@ -44,18 +48,21 @@ extension NSCollectionLayoutSection {
         section.interGroupSpacing = 10
         section.contentInsets = sectionInset
         section.orthogonalScrollingBehavior = .continuous
-        section.boundarySupplementaryItems = [
-            NSCollectionLayoutBoundarySupplementaryItem(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .estimated(50)),
-                                                        elementKind: HomeHeader.elementKind,
-                                                        alignment: .topLeading)
-        ]
+        if let headerElementKind {
+            section.boundarySupplementaryItems = [
+                NSCollectionLayoutBoundarySupplementaryItem(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .estimated(50)),
+                                                            elementKind: headerElementKind,
+                                                            alignment: .topLeading)
+            ]
+        }
         return section
     }
     
     static func WideBannerSection(
         itemSize: NSCollectionLayoutSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1)),
         groupSize: NSCollectionLayoutSize =  NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .estimated(200)),
-        sectionInset: NSDirectionalEdgeInsets = NSDirectionalEdgeInsets(top: 0, leading: 16, bottom: 16, trailing: 16)
+        sectionInset: NSDirectionalEdgeInsets = NSDirectionalEdgeInsets(top: 0, leading: 16, bottom: 16, trailing: 16),
+        headerElementKind: String?
     ) -> NSCollectionLayoutSection {
         
         let item = NSCollectionLayoutItem(layoutSize: itemSize)
@@ -64,11 +71,14 @@ extension NSCollectionLayoutSection {
         
         section.contentInsets = sectionInset
         section.orthogonalScrollingBehavior = .none
-        section.boundarySupplementaryItems = [
-            NSCollectionLayoutBoundarySupplementaryItem(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .estimated(50)),
-                                                        elementKind: HomeHeader.elementKind,
-                                                        alignment: .topLeading)
-        ]
+        if let headerElementKind {
+            section.boundarySupplementaryItems = [
+                NSCollectionLayoutBoundarySupplementaryItem(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .estimated(50)),
+                                                            elementKind: headerElementKind,
+                                                            alignment: .topLeading),
+            ]
+        }
+        
         return section
     }
 }

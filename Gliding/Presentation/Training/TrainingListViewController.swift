@@ -6,15 +6,16 @@
 //
 
 import UIKit
+import ReactorKit
 import RxSwift
 import RxRelay
 import RxCocoa
 
-final class TrainingListViewController: UIViewController {
+final class TrainingListViewController: UIViewController, View {
     typealias DataSource = UICollectionViewDiffableDataSource<Int, TrainingTableModel>
-    
+//    typealias Reactor = ViewReactor
     private var dataSource: DataSource!
-    private let disposeBag = DisposeBag()
+    var disposeBag = DisposeBag()
     private var viewModel: TrainingListViewModel!
     
     private let deleteItem = PublishRelay<UUID>()

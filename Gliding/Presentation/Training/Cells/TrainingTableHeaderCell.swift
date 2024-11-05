@@ -1,5 +1,5 @@
 //
-//  TrainingTableHeader.swift
+//  TrainingTableHeaderCell.swift
 //  Gliding
 //
 //  Created by 안정흠 on 9/26/24.
@@ -7,11 +7,7 @@
 
 import UIKit
 
-
-final class TrainingTableHeader: UICollectionReusableView {
-    static let elementKind = UICollectionView.elementKindSectionHeader
-    static let identifier = "training-detail-header"
-    
+final class TrainingTableHeaderCell: UICollectionViewCell {
     lazy var titleField: UITextField = {
         let field = UITextField()
         field.font = .systemFont(ofSize: 16, weight: .medium)
@@ -30,7 +26,7 @@ final class TrainingTableHeader: UICollectionReusableView {
         return view
     }()
     
-    func configure(with title: String, description: String, isEdit: Bool = false) {
+    func configure(title: String, description: String, isEdit: Bool = false) {
         titleField.text = title
         descriptionField.text = description
         titleField.isUserInteractionEnabled = isEdit

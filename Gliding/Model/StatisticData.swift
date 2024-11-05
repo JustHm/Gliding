@@ -7,7 +7,7 @@
 
 import UIKit
 
-struct StatisticData: Hashable {
+struct StatisticData: Hashable, Codable {
     var workoutDone: Bool
     var date: Date
 }
