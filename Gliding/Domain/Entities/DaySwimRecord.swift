@@ -1,5 +1,5 @@
 //
-//  SwimRecord.swift
+//  DaySwimRecord.swift
 //  Gliding
 //
 //  Created by 안정흠 on 7/26/25.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct SwimRecord {
+struct DaySwimRecord {
     // 요약
     let totalDistance: Double
     let totalTime: Double
