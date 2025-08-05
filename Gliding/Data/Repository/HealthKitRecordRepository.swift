@@ -19,12 +19,28 @@ enum HealthKitError: Error {
     }
 }
 
+enum HealthKitType {
+    case activeEnergyBurned
+    case distanceSwimming
+    case swimmingStrokeCount
+    
+    var quantityTypeIdentifier: HKQuantityTypeIdentifier {
+        switch self {
+        case .activeEnergyBurned:
+            return .activeEnergyBurned
+        case .distanceSwimming:
+            return .distanceSwimming
+        case .swimmingStrokeCount:
+            return .swimmingStrokeCount
+        }
+    }
+}
+
 protocol HealthKitRecordRepository {
-    func fetchDataByDateRange(type: HKQuantityTypeIdentifier, start: Date, end: Date) async throws -> [HKQuantitySample]
-        
-    func fetchDistanceSwimmingByDateRange(start: Date, end: Date) async throws -> [HKQuantitySample]
-    func fetchSwimmingStrokeCountByDateRange(start: Date, end: Date) async throws -> [HKQuantitySample]
-    func fetchActivityEnergyBurned(start: Date, end: Date) async throws -> [HKQuantitySample]
+    func fetchDataByDateRange(type: HealthKitType, start: Date, end: Date) async throws -> [HKQuantitySample]
+//    func fetchDistanceSwimmingByDateRange(start: Date, end: Date) async throws -> [HKQuantitySample]
+//    func fetchSwimmingStrokeCountByDateRange(start: Date, end: Date) async throws -> [HKQuantitySample]
+//    func fetchActivityEnergyBurned(start: Date, end: Date) async throws -> [HKQuantitySample]
     func requestAuthorization() async throws -> Bool
 }
 
@@ -45,58 +61,14 @@ final class HealthKitRecordRepositoryImpl: HealthKitRecordRepository {
         }
     }
     
-    func fetchDataByDateRange(type: HKQuantityTypeIdentifier, start: Date, end: Date) async throws -> [HKQuantitySample] {
+    func fetchDataByDateRange(type: HealthKitType, start: Date, end: Date) async throws -> [HKQuantitySample] {
         try await hasReadAuthorization()
         // Define the type.
-        let swimType = HKQuantityType(type)
+        let swimType = HKQuantityType(type.quantityTypeIdentifier)
         let rangeOfDate = HKQuery.predicateForSamples(withStart: start, end: end, options: .strictStartDate)
         
         // Create the descriptor.
-        let descriptor = HKSampleQueryDescriptor(predicates:[.quantitySample(type: swimType, predicate: rangeOfDate)], sortDescriptors: [])
-        
-        // Launch the query and wait for the results.
-        // The system automatically sets results to [HKQuantitySample].
-        return try await descriptor.result(for: store)
-        
-        let a = try await descriptor.result(for: store)
-    }
-    
-    func fetchDistanceSwimmingByDateRange(start: Date, end: Date) async throws -> [HKQuantitySample] {
-        try await hasReadAuthorization()
-        // Define the type.
-        let swimType = HKQuantityType(.distanceSwimming)
-        let rangeOfDate = HKQuery.predicateForSamples(withStart: start, end: end, options: .strictStartDate)
-        
-        // Create the descriptor.
-        let descriptor = HKSampleQueryDescriptor(predicates:[.quantitySample(type: swimType, predicate: rangeOfDate)], sortDescriptors: [])
-        
-        // Launch the query and wait for the results.
-        // The system automatically sets results to [HKQuantitySample].
-        return try await descriptor.result(for: store)
-    }
-    
-    func fetchSwimmingStrokeCountByDateRange(start: Date, end: Date) async throws -> [HKQuantitySample] {
-        try await hasReadAuthorization()
-        // Define the type.
-        let swimType = HKQuantityType(.swimmingStrokeCount)
-        let rangeOfDate = HKQuery.predicateForSamples(withStart: start, end: end, options: .strictStartDate)
-        
-        // Create the descriptor.
-        let descriptor = HKSampleQueryDescriptor(predicates:[.quantitySample(type: swimType, predicate: rangeOfDate)], sortDescriptors: [])
-        
-        // Launch the query and wait for the results.
-        // The system automatically sets results to [HKQuantitySample].
-        return try await descriptor.result(for: store)
-    }
-    
-    func fetchActivityEnergyBurned(start: Date, end: Date) async throws -> [HKQuantitySample] {
-        try await hasReadAuthorization()
-        // Define the type.
-        let swimType = HKQuantityType(.activeEnergyBurned)
-        let rangeOfDate = HKQuery.predicateForSamples(withStart: start, end: end, options: .strictStartDate)
-        
-        // Create the descriptor.
-        let descriptor = HKSampleQueryDescriptor(predicates:[.quantitySample(type: swimType, predicate: rangeOfDate)], sortDescriptors: [])
+        let descriptor = HKSampleQueryDescriptor(predicates:[.quantitySample(type: swimType, predicate: rangeOfDate)], sortDescriptors: [.init(\.startDate, order: .forward)])
         
         // Launch the query and wait for the results.
         // The system automatically sets results to [HKQuantitySample].
