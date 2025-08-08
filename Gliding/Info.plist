@@ -2,6 +2,10 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>NSHealthShareUsageDescription</key>
+	<string>이 앱은 수영 운동 데이터를 분석하기 위해 건강 데이터를 읽어옵니다.</string>
+	<key>NSHealthClinicalHealthRecordsShareUsageDescription</key>
+	<string>이 앱은 수영 운동 데이터를 분석하기 위해 건강 데이터를 읽어옵니다.</string>
 	<key>UIBackgroundModes</key>
 	<array>
 		<string>remote-notification</string>

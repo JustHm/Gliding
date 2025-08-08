@@ -9,5 +9,5 @@ import Foundation
 
 struct MonthlySwimRecord {
     var totalDistance: Double
-    var workoutDates: Set<Date>
+    var workoutDates: [Date]
 }

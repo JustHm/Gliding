@@ -21,9 +21,9 @@ protocol SwiftDataRepository {
 @ModelActor
 final actor SwiftDataRepositoryImpl<T: PersistentModel>: SwiftDataRepository {
     
-    init(modelContainer: ModelContainer) {
-        self.init(modelContainer: modelContainer)
-    }
+//    init(modelContainer: ModelContainer) {
+//        self.init(modelContainer: modelContainer)
+//    }
     func insertData(data: T) async throws {
         
     }
