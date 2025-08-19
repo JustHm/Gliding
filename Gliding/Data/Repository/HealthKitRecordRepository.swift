@@ -8,77 +8,116 @@
 import Foundation
 import HealthKit
 
-enum HealthKitError: Error {
-    case authorizationDenied
-    
-    var localizedDescription: String {
-        switch self {
-        case .authorizationDenied:
-            return "HealthKit authorization denied."
-        }
-    }
-}
-
-enum HealthKitType {
-    case activeEnergyBurned
-    case distanceSwimming
-    case swimmingStrokeCount
-    
-    var quantityTypeIdentifier: HKQuantityTypeIdentifier {
-        switch self {
-        case .activeEnergyBurned:
-            return .activeEnergyBurned
-        case .distanceSwimming:
-            return .distanceSwimming
-        case .swimmingStrokeCount:
-            return .swimmingStrokeCount
-        }
-    }
-}
-
 protocol HealthKitRecordRepository {
+    ///수영 기록이 오픈워터, 풀인지 반환
+    func fetchWorkoutSwimmingType(start: Date, end: Date) async throws -> [HKWorkout]
+    ///타입과 일치하며 일정 범위에 맞는 데이터를 전부 반환
     func fetchDataByDateRange(type: HealthKitType, start: Date, end: Date) async throws -> [HKQuantitySample]
-//    func fetchDistanceSwimmingByDateRange(start: Date, end: Date) async throws -> [HKQuantitySample]
-//    func fetchSwimmingStrokeCountByDateRange(start: Date, end: Date) async throws -> [HKQuantitySample]
-//    func fetchActivityEnergyBurned(start: Date, end: Date) async throws -> [HKQuantitySample]
+    ///합계, 평균, 최소, 최대 등의 통계를 반환
+    func fetchStatisticsQuery(type: HealthKitType, unit: HKUnit, start: Date, end: Date, option: HKStatisticsOptions) async throws -> Double
+    ///고정간격을 기준으로 시계열 통계를 반환
+    func fetchStatisticsCollectionQuery(type: HealthKitType, start: Date, end: Date, option: HKStatisticsOptions)
+    ///HealthKit 권한 체크
     func requestAuthorization() async throws -> Bool
 }
 
 final class HealthKitRecordRepositoryImpl: HealthKitRecordRepository {
     private let store: HKHealthStore = HKHealthStore()
-    private let read: Set<HKQuantityType>
+    private let read: Set<HKObjectType>
     
     init(read: Set<HKQuantityType>? = nil) {
         if let read = read {
             self.read = read
         }
         else {
-            self.read = Set([
-                HKQuantityType(.activeEnergyBurned),
-                HKQuantityType(.distanceSwimming),
-                HKQuantityType(.swimmingStrokeCount)
-            ])
+            self.read = Set(
+                HealthKitType.allCases.compactMap{HKObjectType.quantityType(forIdentifier: $0.quantityTypeIdentifier)} +
+                [HKObjectType.workoutType(), HKSeriesType.workoutRoute()]
+            )
         }
+    }
+    
+    func fetchWorkoutSwimmingType(start: Date, end: Date) async throws -> [HKWorkout] {
+        try await hasReadAuthorization()
+        
+        let swimType = HKQuery.predicateForWorkouts(with: .swimming)
+        let rangeOfDate = HKQuery.predicateForSamples(withStart: start, end: end, options: .strictStartDate)
+        let compoundPredicate = NSCompoundPredicate(andPredicateWithSubpredicates: [swimType, rangeOfDate])
+        
+        let descriptor = HKSampleQueryDescriptor(
+            predicates: [.workout(compoundPredicate)],
+            sortDescriptors: [.init(\.startDate, order: .forward)]
+        )
+        
+        return try await descriptor.result(for: store)
     }
     
     func fetchDataByDateRange(type: HealthKitType, start: Date, end: Date) async throws -> [HKQuantitySample] {
         try await hasReadAuthorization()
-        // Define the type.
+        
         let swimType = HKQuantityType(type.quantityTypeIdentifier)
         let rangeOfDate = HKQuery.predicateForSamples(withStart: start, end: end, options: .strictStartDate)
         
-        // Create the descriptor.
         let descriptor = HKSampleQueryDescriptor(predicates:[.quantitySample(type: swimType, predicate: rangeOfDate)], sortDescriptors: [.init(\.startDate, order: .forward)])
         
-        // Launch the query and wait for the results.
-        // The system automatically sets results to [HKQuantitySample].
         return try await descriptor.result(for: store)
     }
+
+    
+    func fetchStatisticsQuery(
+        type: HealthKitType,
+        unit: HKUnit,
+        start: Date,
+        end: Date,
+        option: HKStatisticsOptions
+    ) async throws -> Double {
+        try await hasReadAuthorization()
+        
+        let quantityType = HKQuantityType(type.quantityTypeIdentifier)
+        let predicate = HKQuery.predicateForSamples(withStart: start, end: end, options: [])
+        
+        let descriptor = HKStatisticsQueryDescriptor(
+            predicate: .quantitySample(type: quantityType, predicate: predicate),
+            options: option
+        )
+        
+        let stats = try await descriptor.result(for: store)
+        
+        switch option {
+        case .cumulativeSum: // 누적합계
+            return stats?.sumQuantity()?.doubleValue(for: unit) ?? 0
+
+        case .discreteAverage: // 샘플들의 평균값
+            return stats?.averageQuantity()?.doubleValue(for: unit) ?? 0
+
+        case .discreteMin: // 최솟값
+            return stats?.minimumQuantity()?.doubleValue(for: unit) ?? 0
+
+        case .discreteMax: // 최댓값
+            return stats?.maximumQuantity()?.doubleValue(for: unit) ?? 0
+
+        case .mostRecent: // 최근 기록된 값
+            return stats?.mostRecentQuantity()?.doubleValue(for: unit) ?? 0
+        default:
+            return 0
+        }
+    }
+    
+    func fetchStatisticsCollectionQuery(
+        type: HealthKitType,
+        start: Date,
+        end: Date,
+        option: HKStatisticsOptions
+    ) {
+//        HKStatisticsCollectionQuery
+        //HKStatisticsCollectionQueryDescriptor
+    }
+
     
     func requestAuthorization() async throws -> Bool {
         guard HKHealthStore.isHealthDataAvailable() else { return false }
         try await store.requestAuthorization(toShare: [], read: read)
-        // 요청 후 실제로 더 물어볼 필요가 없는지(=이미 허용됐는지) 확인
+        // 요청 후 한 번 더 물어볼 필요가 없는지 확인
         return try await hasReadAuthorization()
     }
     

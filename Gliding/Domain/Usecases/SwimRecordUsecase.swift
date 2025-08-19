@@ -6,34 +6,15 @@
 //
 
 import Foundation
-//import HealthKit
+import HealthKit
 
 protocol SwimRecordUsecase {
-    func fetchSwimRecordByMonthly(start: Date, end: Date) async throws -> MonthlySwimRecord
+    ///한 달간의 수영기록을 불러옴
+    func fetchSwimRecordByMonthly(start: Date, end: Date) async throws -> [SwimmingRecordList]
+    ///하루의 수영기록 상세정보를 불러옴
     func fetchSwimRecordByDay(date: Date) async throws -> DaySwimRecord
+    ///HealthKit 권한 체크
     func requestAuthorization() async throws -> Bool
-}
-
-enum StrokeType: Int {
-    case typeUnknown = 0
-    case mixed
-    case freestyle
-    case backstroke
-    case breaststroke
-    case butterfly
-    case kickboard
-    
-    var decription: String {
-        switch self {
-        case .typeUnknown: return "Unknown"
-        case .mixed: return "Mixed"
-        case .freestyle: return "Freestyle"
-        case .backstroke: return "Backstroke"
-        case .breaststroke: return "Breaststroke"
-        case .butterfly: return "Butterfly"
-        case .kickboard: return "Kickboard"
-        }
-    }
 }
 
 final class SwimRecordUsecaseImpl: SwimRecordUsecase {
@@ -43,25 +24,18 @@ final class SwimRecordUsecaseImpl: SwimRecordUsecase {
         self.repository = repository
     }
     
-    func fetchSwimRecordByMonthly(start: Date, end: Date) async throws -> MonthlySwimRecord {
+    func fetchSwimRecordByMonthly(start: Date, end: Date) async throws -> [SwimmingRecordList] {
         let result = try await repository.fetchDataByDateRange(type: .distanceSwimming, start: start, end: end)
-        var monthlySwimRecord = MonthlySwimRecord(totalDistance: 0.0, workoutDates: [])
-        var dates: Set<Date> = []
+        var records = [SwimmingRecordList]()
         
-        for workout in result {
-            // 한 달 간 수행한 거리
-            monthlySwimRecord.totalDistance += workout.quantity.doubleValue(for: .meter())
+        for workout in try await repository.fetchWorkoutSwimmingType(start: start, end: end) {
+            let locationRawvalue = workout.metadata?[HKMetadataKeySwimmingLocationType] as? Int ?? 0
+            let location = SwimmingLocationType(rawValue: locationRawvalue) ?? .unknown
             
-            // 중복 제거를 위해 | 혹시라도 12시 넘어가는 세션 있을까봐
             let startDate = workout.startDate.startOfDay()
-            let endDate = workout.endDate.startOfDay()
-            
-            dates.insert(startDate)
-            dates.insert(endDate)
+            records.append(SwimmingRecordList(swimmingLocationType: location, workoutDates: startDate))
         }
-        
-        monthlySwimRecord.workoutDates = dates.sorted(by: <)
-        return monthlySwimRecord
+        return records
     }
     
     func fetchSwimRecordByDay(date: Date) async throws -> DaySwimRecord {
@@ -70,30 +44,52 @@ final class SwimRecordUsecaseImpl: SwimRecordUsecase {
         
         let distanceResult = try await repository.fetchDataByDateRange(type: .distanceSwimming, start: startDate, end: endDate)
         let strokeResult = try await repository.fetchDataByDateRange(type: .swimmingStrokeCount, start: startDate, end: endDate)
-        //        let energyBurnResult = try await repository.fetchDataByDateRange(type: .activeEnergyBurned, start: Date(), end: Date())
         
+        let startActivityDate = [distanceResult.first?.startDate, strokeResult.first?.startDate].compactMap{$0}.max() ?? startDate
+        let endActivityDate = [distanceResult.last?.endDate, strokeResult.last?.endDate].compactMap{$0}.max() ?? endDate
+        
+        var result = DaySwimRecord()
+        result.totalActivityBurn = try await repository.fetchStatisticsQuery(type: .activeEnergyBurned, unit: .kilocalorie(), start: startActivityDate, end: endActivityDate, option: .cumulativeSum)
         var distanceIndex = 0
         var strokeIndex = 0
         
-        print("DISTANCE: ")
-        for i in distanceResult {
-            print(i)
-        }
-        
-        print("Stroke: ")
-        for j in strokeResult {
-            print(j)
-        }
-        
         while distanceIndex < distanceResult.count && strokeIndex < strokeResult.count {
-            if distanceResult[distanceIndex].startDate == strokeResult[strokeIndex].startDate {
-                
+            let distanceStartDate = distanceResult[distanceIndex].startDate
+            let strokeStartDate = strokeResult[strokeIndex].startDate
+            var strokeType: StrokeType?
+            
+            if distanceStartDate == strokeStartDate,
+               let type = strokeResult[strokeIndex].metadata?[HKMetadataKeySwimmingStrokeStyle] as? Int
+            {
+                strokeType = StrokeType(rawValue: type)
             }
             
+            let distance = distanceResult[distanceIndex].quantity.doubleValue(for: .meter())
+            result.totalDistance += distance
             
+            switch strokeType {
+            case .freestyle:
+                result.freeStyleDistance += distance
+            case .backstroke:
+                result.backstrokeDistance += distance
+            case .breaststroke:
+                result.breaststrokeDistance += distance
+            case .butterfly:
+                result.butterflyDistance += distance
+            case .mixed:
+                result.mixedDistance += distance
+            case .kickboard:
+                result.kickboardDistance += distance
+            default: //.typeUnknown or nil
+                result.unknownDistance += distance
+                strokeIndex -= 1
+            }
+            
+            strokeIndex += 1
+            distanceIndex += 1
         }
         
-        return DaySwimRecord(totalDistance: 0, totalTime: 0, activityBurn: 0, freeStyleDistance: 0, backstrokeDistance: 0, breaststrokeDistance: 0, butterflyDistance: 0, sourceRevision: "")
+        return result
     }
     
     func requestAuthorization() async throws -> Bool {

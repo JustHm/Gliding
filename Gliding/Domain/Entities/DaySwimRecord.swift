@@ -9,14 +9,42 @@ import Foundation
 
 struct DaySwimRecord {
     // 요약
-    let totalDistance: Double
-    let totalTime: Double
-    let activityBurn: Double
+    var totalDistance: Double
+    var totalTime: Double
+    var totalActivityBurn: Double
     // 영법별 수행 거리
-    let freeStyleDistance: Double
-    let backstrokeDistance: Double
-    let breaststrokeDistance: Double
-    let butterflyDistance: Double
+    var freeStyleDistance: Double
+    var backstrokeDistance: Double
+    var breaststrokeDistance: Double
+    var butterflyDistance: Double
+    var kickboardDistance: Double
+    var mixedDistance: Double
+    var unknownDistance: Double
     //그 외
-    let sourceRevision: String? // 기록한 기기 이름
+    var sourceRevision: String? // 기록한 기기 이름
+    
+    init(totalDistance: Double = 0,
+         totalTime: Double = 0,
+         totalActivityBurn: Double = 0,
+         freeStyleDistance: Double = 0,
+         backstrokeDistance: Double = 0,
+         breaststrokeDistance: Double = 0,
+         butterflyDistance: Double = 0,
+         kickboardDistance: Double = 0,
+         mixedDistance: Double = 0,
+         unknownDistance: Double = 0,
+         sourceRevision: String? = nil
+    ) {
+        self.totalDistance = totalDistance
+        self.totalTime = totalTime
+        self.totalActivityBurn = totalActivityBurn
+        self.freeStyleDistance = freeStyleDistance
+        self.backstrokeDistance = backstrokeDistance
+        self.breaststrokeDistance = breaststrokeDistance
+        self.butterflyDistance = butterflyDistance
+        self.kickboardDistance = kickboardDistance
+        self.mixedDistance = mixedDistance
+        self.unknownDistance = unknownDistance
+        self.sourceRevision = sourceRevision
+    }
 }
