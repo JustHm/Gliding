@@ -7,6 +7,7 @@
 
 import Foundation
 import HealthKit
+import CoreLocation
 
 protocol HealthKitRecordRepository {
     ///수영 기록이 오픈워터, 풀인지 반환
@@ -16,7 +17,9 @@ protocol HealthKitRecordRepository {
     ///합계, 평균, 최소, 최대 등의 통계를 반환
     func fetchStatisticsQuery(type: HealthKitType, unit: HKUnit, start: Date, end: Date, option: HKStatisticsOptions) async throws -> Double
     ///고정간격을 기준으로 시계열 통계를 반환
-    func fetchStatisticsCollectionQuery(type: HealthKitType, start: Date, end: Date, option: HKStatisticsOptions)
+    func fetchStatisticsCollectionQuery(type: HealthKitType, start: Date, end: Date, option: HKStatisticsOptions) async throws
+    ///수영기록 중 오픈워터일때 이동경로를 반환
+    func fetchOpenWaterRoute(workout: HKWorkout) async throws -> [CLLocationCoordinate2D]
     ///HealthKit 권한 체크
     func requestAuthorization() async throws -> Bool
 }
@@ -108,9 +111,32 @@ final class HealthKitRecordRepositoryImpl: HealthKitRecordRepository {
         start: Date,
         end: Date,
         option: HKStatisticsOptions
-    ) {
+    ) async throws {
 //        HKStatisticsCollectionQuery
         //HKStatisticsCollectionQueryDescriptor
+    }
+    
+    func fetchOpenWaterRoute(workout: HKWorkout) async throws -> [CLLocationCoordinate2D] {
+        try await hasReadAuthorization()
+        
+        let predicate = HKQuery.predicateForObjects(from: workout)
+        let routeType = HKSeriesType.workoutRoute()
+        
+        let descriptor = HKSampleQueryDescriptor(
+            predicates: [.sample(type: routeType, predicate: predicate)],
+            sortDescriptors: [.init(\.startDate, order: .forward)]
+        )
+        let routes = try await (descriptor.result(for: store) as? [HKWorkoutRoute]) ?? []
+
+       var coordinators: [CLLocation] = []
+       for route in routes {
+           let locations = HKWorkoutRouteQueryDescriptor(route).results(for: store)
+           for try await location in locations {
+               coordinators.append(location)
+           }
+       }
+
+       return coordinators.sorted { $0.timestamp < $1.timestamp }.map(\.coordinate)
     }
 
     

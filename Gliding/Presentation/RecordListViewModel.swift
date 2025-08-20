@@ -25,7 +25,7 @@ final class RecordListViewModel {
     var listType = RecordListType.list
     var calendarDates: [[Date]] = [[Date]]()
     var calendarSelection: Int = 1
-    var swimRecrods: MonthlySwimRecord = MonthlySwimRecord(totalDistance: 0, workoutDates: [])
+//    var swimRecrods: MonthlySwimRecord = MonthlySwimRecord(totalDistance: 0, workoutDates: [])
     
     init(usecase: SwimRecordUsecase) {
         self.usecase = usecase
@@ -52,7 +52,7 @@ final class RecordListViewModel {
         else { throw DateError.connotCreateDate }
         
         do {
-            swimRecrods = try await usecase.fetchSwimRecordByMonthly(start: startDate, end: endDate)
+            _ = try await usecase.fetchSwimRecordByMonthly(start: startDate, end: endDate)
         }
         catch {
             throw error

@@ -41,9 +41,9 @@ struct ContentView: View {
     @ViewBuilder
     func listTypeView() -> some View {
         if isListType {
-            List(viewModel.swimRecrods.workoutDates, id: \.self) { item in
-                Text(item.dateToString(format: "YYYY-MM-dd"))
-            }
+//            List(viewModel.swimRecrods.workoutDates, id: \.self) { item in
+//                Text(item.dateToString(format: "YYYY-MM-dd"))
+//            }
         }
         else {
             Text("Calendar")

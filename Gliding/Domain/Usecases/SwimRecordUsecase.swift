@@ -7,12 +7,15 @@
 
 import Foundation
 import HealthKit
+import CoreLocation
 
 protocol SwimRecordUsecase {
     ///한 달간의 수영기록을 불러옴
     func fetchSwimRecordByMonthly(start: Date, end: Date) async throws -> [SwimmingRecordList]
     ///하루의 수영기록 상세정보를 불러옴
     func fetchSwimRecordByDay(date: Date) async throws -> DaySwimRecord
+    ///하루의 수영기록이  OpenWater일때 Route를 반환함
+    func fetchSwimmingRouteFromOpenWater(date: Date) async throws -> [CLLocationCoordinate2D]
     ///HealthKit 권한 체크
     func requestAuthorization() async throws -> Bool
 }
@@ -25,10 +28,10 @@ final class SwimRecordUsecaseImpl: SwimRecordUsecase {
     }
     
     func fetchSwimRecordByMonthly(start: Date, end: Date) async throws -> [SwimmingRecordList] {
-        let result = try await repository.fetchDataByDateRange(type: .distanceSwimming, start: start, end: end)
         var records = [SwimmingRecordList]()
-        
-        for workout in try await repository.fetchWorkoutSwimmingType(start: start, end: end) {
+        let workouts = try await repository.fetchWorkoutSwimmingType(start: start, end: end)
+        print(workouts)
+        for workout in workouts {
             let locationRawvalue = workout.metadata?[HKMetadataKeySwimmingLocationType] as? Int ?? 0
             let location = SwimmingLocationType(rawValue: locationRawvalue) ?? .unknown
             
@@ -39,6 +42,7 @@ final class SwimRecordUsecaseImpl: SwimRecordUsecase {
     }
     
     func fetchSwimRecordByDay(date: Date) async throws -> DaySwimRecord {
+        var result = DaySwimRecord()
         let startDate = date.startOfDay()
         let endDate = date.endOfDay()!
         
@@ -48,12 +52,14 @@ final class SwimRecordUsecaseImpl: SwimRecordUsecase {
         let startActivityDate = [distanceResult.first?.startDate, strokeResult.first?.startDate].compactMap{$0}.max() ?? startDate
         let endActivityDate = [distanceResult.last?.endDate, strokeResult.last?.endDate].compactMap{$0}.max() ?? endDate
         
-        var result = DaySwimRecord()
         result.totalActivityBurn = try await repository.fetchStatisticsQuery(type: .activeEnergyBurned, unit: .kilocalorie(), start: startActivityDate, end: endActivityDate, option: .cumulativeSum)
+        // 여기서 hearRate도 fetch
+        
         var distanceIndex = 0
         var strokeIndex = 0
         
         while distanceIndex < distanceResult.count && strokeIndex < strokeResult.count {
+            let distance = distanceResult[distanceIndex].quantity.doubleValue(for: .meter())
             let distanceStartDate = distanceResult[distanceIndex].startDate
             let strokeStartDate = strokeResult[strokeIndex].startDate
             var strokeType: StrokeType?
@@ -63,33 +69,27 @@ final class SwimRecordUsecaseImpl: SwimRecordUsecase {
             {
                 strokeType = StrokeType(rawValue: type)
             }
+            else { strokeIndex -= 1 }
             
-            let distance = distanceResult[distanceIndex].quantity.doubleValue(for: .meter())
             result.totalDistance += distance
+            result.distanceOfStyle[strokeType ?? .typeUnknown, default: 0] += distance
             
-            switch strokeType {
-            case .freestyle:
-                result.freeStyleDistance += distance
-            case .backstroke:
-                result.backstrokeDistance += distance
-            case .breaststroke:
-                result.breaststrokeDistance += distance
-            case .butterfly:
-                result.butterflyDistance += distance
-            case .mixed:
-                result.mixedDistance += distance
-            case .kickboard:
-                result.kickboardDistance += distance
-            default: //.typeUnknown or nil
-                result.unknownDistance += distance
-                strokeIndex -= 1
-            }
             
             strokeIndex += 1
             distanceIndex += 1
         }
         
         return result
+    }
+    
+    func fetchSwimmingRouteFromOpenWater(date: Date) async throws -> [CLLocationCoordinate2D] {
+//        var routes = [[CLLocationCoordinate2D]]()
+//        for workout in try await repository.fetchWorkoutSwimmingType(start: date.startOfDay(), end: date.endOfDay()!) {
+//            routes.append(contentsOf: try await repository.fetchOpenWaterRoute(workout: workout))
+//            
+//        }
+////
+        return []
     }
     
     func requestAuthorization() async throws -> Bool {

@@ -4,7 +4,7 @@
 //
 //  Created by 안정흠 on 8/19/25.
 //
-
+import HealthKit
 
 enum HealthKitType: CaseIterable {
     case activeEnergyBurned
