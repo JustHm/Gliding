@@ -9,6 +9,7 @@ import Foundation
 
 struct SwimmingRecordList {
     var swimmingLocationType: SwimmingLocationType
+    var duration: TimeInterval
     var workoutDates: Date
 }
 

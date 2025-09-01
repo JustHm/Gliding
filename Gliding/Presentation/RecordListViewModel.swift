@@ -18,19 +18,16 @@ enum RecordListType: String {
 
 @Observable
 final class RecordListViewModel {
-    @ObservationIgnored private var usecase: SwimRecordUsecase
+    @ObservationIgnored private let usecase: SwimRecordUsecase
     
-    var currentYear: Int
-    var currentMonth: Int
+    var calendarGrid: [[Date?]] = Array(repeating: Array(repeating: nil, count: 7), count: 6)
     var listType = RecordListType.list
-    var calendarDates: [[Date]] = [[Date]]()
-    var calendarSelection: Int = 1
-//    var swimRecrods: MonthlySwimRecord = MonthlySwimRecord(totalDistance: 0, workoutDates: [])
+    var selectedMonth: Date
+    var recordList: [SwimmingRecordList] = []
     
     init(usecase: SwimRecordUsecase) {
         self.usecase = usecase
-        self.currentYear = Int(Date().dateToString(format: "yyyy"))!
-        self.currentMonth = Int(Date().dateToString(format: "MM"))!
+        self.selectedMonth = Date().startOfMonth()
     }
     
     
@@ -38,29 +35,29 @@ final class RecordListViewModel {
         
     }
     
-    func prevMonth() {
+    func prevMonth() { shiftCalendar(value: -1) }
+    
+    func nextMonth() { shiftCalendar(value: 1) }
+    
+    private func shiftCalendar(value: Int) {
+        guard let shifted = selectedMonth.caculateMonth(value: value)?.startOfMonth() else { return }
+        selectedMonth = shifted
+        fetchCalendarGrids()
+    }
+    
+    func fetchCalendarGrids() {
+        let startOffset =  3 //Calendar.monthStartOffset(<#T##self: Calendar##Calendar#>)
         
     }
     
-    func nextMonth() {
+    func fetchMonthlyRecords() async throws {
+        let start = selectedMonth.startOfMonth()
+        let end = selectedMonth.endOfMonth()
         
+        recordList = try await usecase.fetchSwimRecordByMonthly(start: start, end: end)
     }
     
-    func fetchSwimRecords() async throws {
-        guard let startDate = Date.createDate(year: currentYear, month: currentMonth, day: 1),
-              let endDate = startDate.endOfMonth()
-        else { throw DateError.connotCreateDate }
-        
-        do {
-            _ = try await usecase.fetchSwimRecordByMonthly(start: startDate, end: endDate)
-        }
-        catch {
-            throw error
-        }
+    func fetchSwimRecordByDate(_ date: Date) async throws -> DaySwimRecord {
+        return try await usecase.fetchSwimRecordByDay(date: date)
     }
-}
-
-
-enum DateError: Error {
-    case connotCreateDate
 }

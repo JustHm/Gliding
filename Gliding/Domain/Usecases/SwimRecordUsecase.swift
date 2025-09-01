@@ -36,7 +36,7 @@ final class SwimRecordUsecaseImpl: SwimRecordUsecase {
             let location = SwimmingLocationType(rawValue: locationRawvalue) ?? .unknown
             
             let startDate = workout.startDate.startOfDay()
-            records.append(SwimmingRecordList(swimmingLocationType: location, workoutDates: startDate))
+            records.append(SwimmingRecordList(swimmingLocationType: location, duration: workout.duration, workoutDates: startDate))
         }
         return records
     }
@@ -48,7 +48,7 @@ final class SwimRecordUsecaseImpl: SwimRecordUsecase {
         
         let distanceResult = try await repository.fetchDataByDateRange(type: .distanceSwimming, start: startDate, end: endDate)
         let strokeResult = try await repository.fetchDataByDateRange(type: .swimmingStrokeCount, start: startDate, end: endDate)
-        
+
         let startActivityDate = [distanceResult.first?.startDate, strokeResult.first?.startDate].compactMap{$0}.max() ?? startDate
         let endActivityDate = [distanceResult.last?.endDate, strokeResult.last?.endDate].compactMap{$0}.max() ?? endDate
         
