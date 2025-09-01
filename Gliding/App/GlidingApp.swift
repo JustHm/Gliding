@@ -25,7 +25,8 @@ struct GlidingApp: App {
 
     var body: some Scene {
         WindowGroup {
-            HealthKitFetchTest()
+            ContentView()
+//            HealthKitFetchTest()
         }
 //        .modelContainer(sharedModelContainer)
     }

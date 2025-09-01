@@ -30,7 +30,7 @@ final class SwimRecordUsecaseImpl: SwimRecordUsecase {
     func fetchSwimRecordByMonthly(start: Date, end: Date) async throws -> [SwimmingRecordList] {
         var records = [SwimmingRecordList]()
         let workouts = try await repository.fetchWorkoutSwimmingType(start: start, end: end)
-        print(workouts)
+        
         for workout in workouts {
             let locationRawvalue = workout.metadata?[HKMetadataKeySwimmingLocationType] as? Int ?? 0
             let location = SwimmingLocationType(rawValue: locationRawvalue) ?? .unknown

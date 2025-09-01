@@ -17,7 +17,7 @@ struct HealthKitFetchTest: View {
                 Task {
                     do {
                         let start = Date.createDate(year: 2025, month: 6, day: 4)!
-                        _ = try await usecase.fetchSwimRecordByMonthly(start: start.startOfMonth()!, end: start.endOfMonth()!)
+                        _ = try await usecase.fetchSwimRecordByMonthly(start: start.startOfMonth(), end: start.endOfMonth())
                         let temp = try await usecase.fetchSwimRecordByDay(date: start)
                         print("TEMP: ", temp)
                     }
