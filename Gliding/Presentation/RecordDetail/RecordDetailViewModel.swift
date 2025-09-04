@@ -12,7 +12,7 @@ import Observation
 final class RecordDetailViewModel {
     @ObservationIgnored private let usecase: SwimRecordUsecase
     
-    var record: SwimRecord?
+//    var record: SwimRecord?
     
     
     init(usecase: SwimRecordUsecase) {

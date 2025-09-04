@@ -15,13 +15,13 @@ struct DaySwimRecord {
     // 영법별 수행 거리
     var distanceOfStyle: [StrokeType: Double]
     //그 외
-    var sourceRevision: String? // 기록한 기기 이름
+    var sourceRevision: String // 기록한 기기 이름
     
     init(totalDistance: Double = 0,
          totalTime: Double = 0,
          totalActivityBurn: Double = 0,
          distanceOfStyle: [StrokeType: Double] = [StrokeType: Double](),
-         sourceRevision: String? = nil
+         sourceRevision: String = ""
     ) {
         self.totalDistance = totalDistance
         self.totalTime = totalTime

@@ -25,16 +25,27 @@ final class RecordListViewModel {
     var selectedMonth: Date
     var recordList: [SwimmingRecordList] = []
     
+    var swimRecord: DaySwimRecord?
+    
     init(usecase: SwimRecordUsecase) {
         self.usecase = usecase
         self.selectedMonth = Date().startOfMonth()
     }
     
-    
-    private func fetchDates() {
+    func fetchMonthlyRecords() async throws {
+        let start = selectedMonth.startOfMonth()
+        let end = selectedMonth.endOfMonth()
         
+        recordList = try await usecase.fetchSwimRecordByMonthly(start: start, end: end)
     }
     
+    func fetchSwimRecordByDate(_ date: Date) async throws {
+        swimRecord = try await usecase.fetchSwimRecordByDay(date: date)
+    }
+}
+
+// MARK: for Calendar
+extension RecordListViewModel {
     func prevMonth() { shiftCalendar(value: -1) }
     
     func nextMonth() { shiftCalendar(value: 1) }
@@ -50,14 +61,8 @@ final class RecordListViewModel {
         
     }
     
-    func fetchMonthlyRecords() async throws {
-        let start = selectedMonth.startOfMonth()
-        let end = selectedMonth.endOfMonth()
-        
-        recordList = try await usecase.fetchSwimRecordByMonthly(start: start, end: end)
-    }
     
-    func fetchSwimRecordByDate(_ date: Date) async throws -> DaySwimRecord {
-        return try await usecase.fetchSwimRecordByDay(date: date)
+    private func fetchDates() {
+        
     }
 }

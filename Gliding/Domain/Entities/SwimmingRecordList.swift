@@ -10,7 +10,7 @@ import Foundation
 struct SwimmingRecordList: Hashable {
     var swimmingLocationType: SwimmingLocationType
     var duration: TimeInterval
-    var workoutDates: Date
+    var workoutDate: Date
 }
 
 

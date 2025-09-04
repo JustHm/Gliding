@@ -36,7 +36,7 @@ final class SwimRecordUsecaseImpl: SwimRecordUsecase {
             let location = SwimmingLocationType(rawValue: locationRawvalue) ?? .unknown
             
             let startDate = workout.startDate.startOfDay()
-            records.append(SwimmingRecordList(swimmingLocationType: location, duration: workout.duration, workoutDates: startDate))
+            records.append(SwimmingRecordList(swimmingLocationType: location, duration: workout.duration, workoutDate: startDate))
         }
         return records
     }
@@ -53,6 +53,8 @@ final class SwimRecordUsecaseImpl: SwimRecordUsecase {
         let endActivityDate = [distanceResult.last?.endDate, strokeResult.last?.endDate].compactMap{$0}.max() ?? endDate
         
         result.totalActivityBurn = try await repository.fetchStatisticsQuery(type: .activeEnergyBurned, unit: .kilocalorie(), start: startActivityDate, end: endActivityDate, option: .cumulativeSum)
+        result.sourceRevision = strokeResult[0].sourceRevision.source.name
+        
         // 여기서 hearRate도 fetch
         
         var distanceIndex = 0
