@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Charts
 
 struct RecordDetailView: View {
     let selected: SwimmingRecordList
@@ -32,10 +33,19 @@ struct RecordDetailView: View {
             .padding([.leading, .trailing], 16)
             
             if let record = viewModel.swimRecord {
+                StrokeDistanceChartView(record: record)
+                    .padding()
                 Text("\(record.totalActivityBurn)")
-                Text("\(record.totalDistance)")
-                Text("\(record.sourceRevision)")
-                Text("\(record.distanceOfStyle[StrokeType.freestyle, default: -1])")
+                
+                HStack {
+                    Spacer()
+                    Image(systemName: "applewatch")
+                    Text("\(record.sourceRevision)")
+                }
+                .font(.subheadline)
+                .foregroundStyle(.secondary)
+                .padding()
+//                Text("\(record.distanceOfStyle[StrokeType.freestyle, default: -1])")
             }
             Spacer()
             
