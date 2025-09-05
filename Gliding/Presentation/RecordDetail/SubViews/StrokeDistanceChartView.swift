@@ -9,17 +9,20 @@ import SwiftUI
 import Charts
 
 struct StrokeDistanceChartView: View {
-    let record: DaySwimRecord
+    let record: DailySwimSummary
     @State var isExpanded: Bool = false
     
     var body: some View {
         VStack(alignment: .leading) {
             HStack {
+                Image(systemName: "figure.pool.swim")
+                    .font(.headline)
+                    .bold()
                 Text("영법별 거리")
                     .font(.headline)
                     .bold()
                 Spacer()
-                Text("Total \(Int(record.totalDistance))M")
+                Text("총 \(Int(record.totalDistance))M")
                     .font(.subheadline)
                     .bold()
             }
@@ -59,8 +62,8 @@ struct StrokeDistanceChartView: View {
             
         }
         .padding()
-        .background(Color.gray)
-        .clipShape(RoundedRectangle(cornerSize: .init(width: 8, height: 8)))
+//        .background(Color.gray)
+//        .clipShape(RoundedRectangle(cornerSize: .init(width: 8, height: 8)))
     }
     
 //    @ViewBuilder

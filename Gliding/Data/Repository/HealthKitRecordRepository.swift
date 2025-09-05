@@ -15,9 +15,9 @@ protocol HealthKitRecordRepository {
     ///타입과 일치하며 일정 범위에 맞는 데이터를 전부 반환
     func fetchDataByDateRange(type: HealthKitType, start: Date, end: Date) async throws -> [HKQuantitySample]
     ///합계, 평균, 최소, 최대 등의 통계를 반환
-    func fetchStatisticsQuery(type: HealthKitType, unit: HKUnit, start: Date, end: Date, option: HKStatisticsOptions) async throws -> Double
+    func fetchStatisticsQuery(type: HealthKitType, unit: HKUnit, start: Date, end: Date, options: HKStatisticsOptions) async throws -> Double
     ///고정간격을 기준으로 시계열 통계를 반환
-    func fetchStatisticsCollectionQuery(type: HealthKitType, start: Date, end: Date, option: HKStatisticsOptions) async throws
+    func fetchStatisticsCollectionQuery(type: HealthKitType, start: Date, end: Date, options: HKStatisticsOptions, interval: DateComponents) async throws -> HKStatisticsCollection
     ///수영기록 중 오픈워터일때 이동경로를 반환
     func fetchOpenWaterRoute(workout: HKWorkout) async throws -> [CLLocationCoordinate2D]
     ///HealthKit 권한 체크
@@ -72,7 +72,7 @@ final class HealthKitRecordRepositoryImpl: HealthKitRecordRepository {
         unit: HKUnit,
         start: Date,
         end: Date,
-        option: HKStatisticsOptions
+        options: HKStatisticsOptions
     ) async throws -> Double {
         try await hasReadAuthorization()
         
@@ -81,12 +81,12 @@ final class HealthKitRecordRepositoryImpl: HealthKitRecordRepository {
         
         let descriptor = HKStatisticsQueryDescriptor(
             predicate: .quantitySample(type: quantityType, predicate: predicate),
-            options: option
+            options: options
         )
         
         let stats = try await descriptor.result(for: store)
         
-        switch option {
+        switch options {
         case .cumulativeSum: // 누적합계
             return stats?.sumQuantity()?.doubleValue(for: unit) ?? 0
 
@@ -110,10 +110,16 @@ final class HealthKitRecordRepositoryImpl: HealthKitRecordRepository {
         type: HealthKitType,
         start: Date,
         end: Date,
-        option: HKStatisticsOptions
-    ) async throws {
-//        HKStatisticsCollectionQuery
-        //HKStatisticsCollectionQueryDescriptor
+        options: HKStatisticsOptions,
+        interval: DateComponents = DateComponents(minute: 1)
+    ) async throws -> HKStatisticsCollection {
+        let predicate = HKQuery.predicateForSamples(withStart: start, end: end, options: .strictStartDate)
+        let quantityType = HKQuantityType(type.quantityTypeIdentifier)
+        let sameplePredicate = HKSamplePredicate.quantitySample(type: quantityType, predicate: predicate)
+        
+        let descriptor = HKStatisticsCollectionQueryDescriptor(predicate: sameplePredicate, options: options, anchorDate: start, intervalComponents: interval)
+        
+        return try await descriptor.result(for: store)
     }
     
     func fetchOpenWaterRoute(workout: HKWorkout) async throws -> [CLLocationCoordinate2D] {

@@ -13,46 +13,66 @@ struct RecordDetailView: View {
     @Bindable var viewModel: RecordListViewModel
     
     var body: some View {
-        VStack(alignment: .leading) {
-            Text(selected.workoutDate.dateToString(format: "YYYY년"))
-                .font(.title)
-                .bold()
+        ScrollView {
+            VStack(alignment: .leading) {
+                HStack(alignment: .bottom) {
+                    Text(selected.workoutDate.dateToString(format: "YYYY년"))
+                        .font(.title)
+                        .bold()
+                    Spacer()
+                    if let swimSummary = viewModel.swimSummary {
+                        HStack {
+                            let start = swimSummary.startDate.dateToString(format: "HH:mm")
+                            let end = swimSummary.endDate.dateToString(format: "HH:mm")
+                            Text("\(start)~\(end)")
+                        }
+                        .font(.subheadline)
+                        .foregroundStyle(.secondary)
+                    }
+                }
                 .padding([.leading, .trailing, .top], 16)
                 .padding([.bottom], 2)
-            HStack {
-                Text(selected.workoutDate.dateToString(format: "MM월 dd일 기록"))
-                    .font(.title2)
-                Spacer()
-                Group {
-                    Image(systemName: "stopwatch")
-                    Text(Duration.seconds(selected.duration), format: .time(pattern: .hourMinuteSecond))
-                }
-                .font(.headline)
-                .foregroundStyle(Color.gray)
-            }
-            .padding([.leading, .trailing], 16)
-            
-            if let record = viewModel.swimRecord {
-                StrokeDistanceChartView(record: record)
-                    .padding()
-                Text("\(record.totalActivityBurn)")
-                
                 HStack {
+                    Text(selected.workoutDate.dateToString(format: "MM월 dd일 기록"))
+                        .font(.title2)
                     Spacer()
-                    Image(systemName: "applewatch")
-                    Text("\(record.sourceRevision)")
+                    Group {
+                        Image(systemName: "stopwatch")
+                        Text(Duration.seconds(selected.duration), format: .time(pattern: .hourMinuteSecond))
+                    }
+                    .font(.headline)
+                    .foregroundStyle(Color.gray)
                 }
-                .font(.subheadline)
-                .foregroundStyle(.secondary)
-                .padding()
-//                Text("\(record.distanceOfStyle[StrokeType.freestyle, default: -1])")
+                .padding([.leading, .trailing], 16)
+                
+                if let swimSummary = viewModel.swimSummary {
+                    StrokeDistanceChartView(record: swimSummary)
+                        .padding()
+                }
+                
+                if let statusSummary = viewModel.statusSummary {
+                    HeartRateChartView(statusSummary: statusSummary)
+                        .padding()
+                }
+                
+                if let swimSummary = viewModel.swimSummary {
+                    HStack {
+                        Spacer()
+                        Image(systemName: "applewatch")
+                        Text("\(swimSummary.sourceRevision)")
+                    }
+                    .font(.subheadline)
+                    .foregroundStyle(.secondary)
+                    .padding(.horizontal)
+                    .padding(.top, 4)
+                }
+                Spacer()
+                
             }
-            Spacer()
-            
         }
         .task {
             do {
-                try await viewModel.fetchSwimRecordByDate(selected.workoutDate)
+                try await viewModel.fetchSwimRecordByDate(date: selected.workoutDate, duration: selected.duration)
             }
             catch {
                 print(error.localizedDescription)
@@ -62,5 +82,5 @@ struct RecordDetailView: View {
 }
 
 #Preview {
-//    RecordDetailView()
+    //    RecordDetailView()
 }

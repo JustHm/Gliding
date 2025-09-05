@@ -1,0 +1,65 @@
+//
+//  HeartRateChartView.swift
+//  Gliding
+//
+//  Created by 안정흠 on 9/5/25.
+//
+
+import SwiftUI
+import Charts
+
+struct HeartRateChartView: View {
+    let statusSummary: DailyStatusSummary
+    var body: some View {
+        VStack(alignment: .leading) {
+            HStack {
+                Image(systemName: "heart.fill")
+                Text("심장박동수")
+            }
+            .font(.headline)
+            .foregroundStyle(Color.red)
+            .bold()
+            .padding(.bottom, 8)
+            
+            
+            
+            Chart(statusSummary.heartRateBucket) { item in
+                BarMark(
+                    x: .value("Time", item.start, unit: .minute),
+                    yStart: .value("BPM Min", item.minBPM),
+                    yEnd: .value("BPM Max", item.maxBPM),
+                    width: .fixed(10)
+                )
+                .clipShape(Capsule()).foregroundStyle(.red)
+            }
+            .chartXAxis {
+                AxisMarks(values: .stride(by: ChartStrideBy.hour.time)) { _ in
+                    AxisValueLabel(
+                        format: .dateTime.hour(.defaultDigits(amPM: .narrow))
+                    )
+                }
+            }
+            .chartYScale(domain: 50...250).frame(height: 150)
+            
+            HStack {
+                temp(title: "최고 심박수", value: Int(statusSummary.heartRateMax), unit: "BPM")
+                Spacer()
+                temp(title: "평균 심박수", value: Int(statusSummary.heartRateMax), unit: "BPM")
+                Spacer()
+                temp(title: "활동 칼로리", value: Int(statusSummary.heartRateMax), unit: "KCAL")
+            }
+            .padding(.top, 16)
+        }
+        .padding()
+    }
+    
+    func temp(title: String, value: Int, unit: String) -> some View {
+        VStack(alignment: .leading) {
+            Text(title).font(.headline)
+            HStack(alignment: .bottom) {
+                Text("\(value)").font(.title2)
+                Text(unit).font(.headline)
+            }
+        }
+    }
+}

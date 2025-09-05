@@ -25,7 +25,8 @@ final class RecordListViewModel {
     var selectedMonth: Date
     var recordList: [SwimmingRecordList] = []
     
-    var swimRecord: DaySwimRecord?
+    var swimSummary: DailySwimSummary?
+    var statusSummary: DailyStatusSummary?
     
     init(usecase: SwimRecordUsecase) {
         self.usecase = usecase
@@ -39,8 +40,16 @@ final class RecordListViewModel {
         recordList = try await usecase.fetchSwimRecordByMonthly(start: start, end: end)
     }
     
-    func fetchSwimRecordByDate(_ date: Date) async throws {
-        swimRecord = try await usecase.fetchSwimRecordByDay(date: date)
+    func fetchSwimRecordByDate(date: Date, duration: TimeInterval) async throws {
+        swimSummary = try await usecase.fetchSwimRecordByDay(date: date)
+        if let start = swimSummary?.startDate,
+           let end = swimSummary?.endDate {
+            let interval = DateComponents(second: Int(duration) / 20)
+            statusSummary = try await usecase.fetchDailyStatusFromWorkout(start: start, end: end, interval: interval)
+        }
+        else {
+            print("ERROR: SWIM SUMMARY IS NIL")
+        }
     }
 }
 
