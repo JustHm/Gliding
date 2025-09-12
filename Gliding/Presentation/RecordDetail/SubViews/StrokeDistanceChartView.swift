@@ -42,11 +42,6 @@ struct StrokeDistanceChartView: View {
             .padding(.bottom, 8)
             
             DisclosureGroup("자세히 보기") {
-                HStack {
-                    Text("영법").font(.callout).bold()
-                    Spacer()
-                    Text("거리").font(.callout).bold()
-                }
                 Divider()
                 ForEach(StrokeType.allCases, id: \.self) { strokeType in
                     HStack {

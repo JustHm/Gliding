@@ -42,24 +42,29 @@ struct HeartRateChartView: View {
             .chartYScale(domain: 50...250).frame(height: 150)
             
             HStack {
-                temp(title: "최고 심박수", value: Int(statusSummary.heartRateMax), unit: "BPM")
+                block(image: "heart.fill", title: "최고", value: Int(statusSummary.heartRateMax), unit: "BPM")
                 Spacer()
-                temp(title: "평균 심박수", value: Int(statusSummary.heartRateMax), unit: "BPM")
+                block(image: "heart.fill", title: "평균", value: Int(statusSummary.heartRateAvg), unit: "BPM")
                 Spacer()
-                temp(title: "활동 칼로리", value: Int(statusSummary.heartRateMax), unit: "KCAL")
+                block(image: "flame", title: "활동칼로리", value: Int(statusSummary.totalActivityBurn), unit: "KCAL")
             }
             .padding(.top, 16)
         }
         .padding()
     }
     
-    func temp(title: String, value: Int, unit: String) -> some View {
-        VStack(alignment: .leading) {
-            Text(title).font(.headline)
+    func block(image: String, title: String, value: Int, unit: String) -> some View {
+        VStack(alignment: .center) {
+            HStack {
+                Image(systemName: image)
+                    .foregroundStyle(Color.red)
+                Text(title).font(.headline)
+            }
             HStack(alignment: .bottom) {
                 Text("\(value)").font(.title2)
                 Text(unit).font(.headline)
             }
+            .padding(.top, 4)
         }
     }
 }
