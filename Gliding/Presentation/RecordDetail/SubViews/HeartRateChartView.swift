@@ -14,10 +14,10 @@ struct HeartRateChartView: View {
         VStack(alignment: .leading) {
             HStack {
                 Image(systemName: "heart.fill")
+                    .foregroundStyle(Color.red)
                 Text("심장박동수")
             }
             .font(.headline)
-            .foregroundStyle(Color.red)
             .bold()
             .padding(.bottom, 8)
             
@@ -32,13 +32,13 @@ struct HeartRateChartView: View {
                 )
                 .clipShape(Capsule()).foregroundStyle(.red)
             }
-            .chartXAxis {
-                AxisMarks(values: .stride(by: ChartStrideBy.hour.time)) { _ in
-                    AxisValueLabel(
-                        format: .dateTime.hour(.defaultDigits(amPM: .narrow))
-                    )
-                }
-            }
+//            .chartXAxis {
+//                AxisMarks(values: .stride(by: ChartStrideBy.hour.time)) { _ in
+//                    AxisValueLabel(
+//                        format: .dateTime.hour(.defaultDigits(amPM: .narrow))
+//                    )
+//                }
+//            }
             .chartYScale(domain: 50...250).frame(height: 150)
             
             HStack {

@@ -47,11 +47,15 @@ struct RecordDetailView: View {
                 
                 if let swimSummary = viewModel.swimSummary {
                     StrokeDistanceChartView(record: swimSummary)
+                        .background(Color.plane)
+                        .clipShape(RoundedRectangle(cornerSize: .init(width: 8, height: 8)))
                         .padding()
                 }
                 
                 if let statusSummary = viewModel.statusSummary {
                     HeartRateChartView(statusSummary: statusSummary)
+                        .background(Color.plane)
+                        .clipShape(RoundedRectangle(cornerSize: .init(width: 8, height: 8)))
                         .padding()
                 }
                 
