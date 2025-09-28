@@ -53,7 +53,7 @@ final class SwimRecordUsecaseImpl: SwimRecordUsecase {
         
         result.startDate = [distanceResult.first?.startDate, strokeResult.first?.startDate].compactMap{$0}.max() ?? startDate
         result.endDate = [distanceResult.last?.endDate, strokeResult.last?.endDate].compactMap{$0}.max() ?? endDate
-        result.sourceRevision = strokeResult[0].sourceRevision.source.name
+        result.sourceRevision = strokeResult.first?.sourceRevision.source.name ?? "Unknown device"
         
         // SwimRecordSummary
         var distanceIndex = 0
