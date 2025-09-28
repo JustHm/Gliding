@@ -51,7 +51,7 @@ final class SwimRecordUsecaseImpl: SwimRecordUsecase {
         let distanceResult = try await repository.fetchDataByDateRange(type: .distanceSwimming, start: startDate, end: endDate)
         let strokeResult = try await repository.fetchDataByDateRange(type: .swimmingStrokeCount, start: startDate, end: endDate)
         
-        result.startDate = [distanceResult.first?.startDate, strokeResult.first?.startDate].compactMap{$0}.max() ?? startDate
+        result.startDate = [distanceResult.first?.startDate, strokeResult.first?.startDate].compactMap{$0}.min() ?? startDate
         result.endDate = [distanceResult.last?.endDate, strokeResult.last?.endDate].compactMap{$0}.max() ?? endDate
         result.sourceRevision = strokeResult.first?.sourceRevision.source.name ?? "Unknown device"
         
