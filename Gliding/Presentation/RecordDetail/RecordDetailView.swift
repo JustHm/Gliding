@@ -16,7 +16,7 @@ struct RecordDetailView: View {
         ScrollView {
             VStack(alignment: .leading) {
                 HStack(alignment: .bottom) {
-                    Text(selected.workoutDate.dateToString(format: "YYYY년"))
+                    Text(selected.workoutDate.dateToString(format: "yyyy년"))
                         .font(.title)
                         .bold()
                     Spacer()

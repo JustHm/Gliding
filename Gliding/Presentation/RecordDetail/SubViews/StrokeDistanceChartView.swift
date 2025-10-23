@@ -43,7 +43,11 @@ struct StrokeDistanceChartView: View {
             
             DisclosureGroup("자세히 보기") {
                 Divider()
-                ForEach(StrokeType.allCases, id: \.self) { strokeType in
+                ForEach(
+                    StrokeType.allCases.filter { (record.distanceOfStyle[$0] ?? 0) > 0 },
+                    id: \.self
+                )
+                { strokeType in
                     HStack {
                         let value = Int(record.distanceOfStyle[strokeType] ?? 0)
                         Text(strokeType.decription).font(.body)
@@ -57,19 +61,6 @@ struct StrokeDistanceChartView: View {
             
         }
         .padding()
-//        .background(Color.gray)
-//        .clipShape(RoundedRectangle(cornerSize: .init(width: 8, height: 8)))
     }
-    
-//    @ViewBuilder
-//    func ExpandedTable() -> some View {
-//        if isExpanded {
-//            Table(StrokeType.allCases) {
-//                TableColumn("영법", value: \.decription)
-//                TableColumn("거리", value: Int(record.distanceOfStyle[\.self] ?? 0))
-//            }
-//        }
-//        
-//    }
 }
 

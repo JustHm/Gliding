@@ -16,7 +16,7 @@ struct PastRecordListCell: View {
                     systemName: record.swimmingLocationType == .pool ?
                     "figure.pool.swim" : "figure.openWater.swim"
                 )
-                Text(record.workoutDate.dateToString(format: "YYYY/MM/dd"))
+                Text(record.workoutDate.dateToString(format: "yyyy/MM/dd"))
                     .bold()
                 Spacer()
                 Text(Duration.seconds(record.duration), format: .time(pattern: .hourMinuteSecond))

@@ -27,7 +27,7 @@ struct ContentView: View {
                         }
                     }
                     Spacer()
-                    Text(viewModel.selectedMonth.dateToString(format: "YYYY.MM"))
+                    Text(viewModel.selectedMonth.dateToString(format: "yyyy.MM"))
                         .font(.title)
                         .fontWeight(.semibold)
                     Spacer()
