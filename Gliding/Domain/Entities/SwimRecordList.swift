@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct SwimmingRecordList: Hashable {
+struct SwimRecordList: Hashable {
     var swimmingLocationType: SwimmingLocationType
     var duration: TimeInterval
     var workoutDate: Date

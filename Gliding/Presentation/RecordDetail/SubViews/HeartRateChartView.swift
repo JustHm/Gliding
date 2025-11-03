@@ -32,13 +32,6 @@ struct HeartRateChartView: View {
                 )
                 .clipShape(Capsule()).foregroundStyle(.red)
             }
-//            .chartXAxis {
-//                AxisMarks(values: .stride(by: ChartStrideBy.hour.time)) { _ in
-//                    AxisValueLabel(
-//                        format: .dateTime.hour(.defaultDigits(amPM: .narrow))
-//                    )
-//                }
-//            }
             .chartYScale(domain: 50...250).frame(height: 150)
             
             HStack {

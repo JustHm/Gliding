@@ -23,7 +23,7 @@ final class RecordListViewModel {
     var calendarGrid: [[Date?]] = Array(repeating: Array(repeating: nil, count: 7), count: 6)
     var listType = RecordListType.list
     var selectedMonth: Date
-    var recordList: [SwimmingRecordList] = []
+    var recordList: [SwimRecordList] = []
     
     var swimSummary: DailySwimSummary?
     var statusSummary: DailyStatusSummary?

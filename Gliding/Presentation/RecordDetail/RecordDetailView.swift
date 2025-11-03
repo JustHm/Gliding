@@ -9,7 +9,7 @@ import SwiftUI
 import Charts
 
 struct RecordDetailView: View {
-    let selected: SwimmingRecordList
+    let selected: SwimRecordList
     @Bindable var viewModel: RecordListViewModel
     
     var body: some View {

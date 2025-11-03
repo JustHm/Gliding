@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct PastRecordListCell: View {
-    let record: SwimmingRecordList
+    let record: SwimRecordList
     var body: some View {
         VStack {
             HStack {

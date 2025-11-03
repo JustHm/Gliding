@@ -11,7 +11,7 @@ import CoreLocation
 
 protocol SwimRecordUsecase {
     ///한 달간의 수영기록을 불러옴
-    func fetchSwimRecordByMonthly(start: Date, end: Date) async throws -> [SwimmingRecordList]
+    func fetchSwimRecordByMonthly(start: Date, end: Date) async throws -> [SwimRecordList]
     ///하루의 수영기록 상세정보를 불러옴
     func fetchSwimRecordByDay(date: Date) async throws -> DailySwimSummary
     ///하루의 운동기록 중 심장박동, 칼로리를 반환
@@ -29,8 +29,8 @@ final class SwimRecordUsecaseImpl: SwimRecordUsecase {
         self.repository = repository
     }
     
-    func fetchSwimRecordByMonthly(start: Date, end: Date) async throws -> [SwimmingRecordList] {
-        var records = [SwimmingRecordList]()
+    func fetchSwimRecordByMonthly(start: Date, end: Date) async throws -> [SwimRecordList] {
+        var records = [SwimRecordList]()
         let workouts = try await repository.fetchWorkoutSwimmingType(start: start, end: end)
         
         for workout in workouts {
@@ -38,7 +38,7 @@ final class SwimRecordUsecaseImpl: SwimRecordUsecase {
             let location = SwimmingLocationType(rawValue: locationRawvalue) ?? .unknown
             
             let startDate = workout.startDate.startOfDay()
-            records.append(SwimmingRecordList(swimmingLocationType: location, duration: workout.duration, workoutDate: startDate))
+            records.append(SwimRecordList(swimmingLocationType: location, duration: workout.duration, workoutDate: startDate))
         }
         return records
     }
